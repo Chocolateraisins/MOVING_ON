@@ -1,16 +1,4 @@
-.footer {
-  background: $dark-brown;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 80px;
-  padding: 0px 50px;
-  color: rgba(0,0,0,0.3);
 
-
-  // overflow: hidden;
-
-}
 .footer-links {
   display: flex;
   align-items: center;
@@ -33,3 +21,13 @@ html {
   min-height: 100%;
 }
 
+.footer-content {
+  background: $dark-brown;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.3);
+  width: 100%;
+}
