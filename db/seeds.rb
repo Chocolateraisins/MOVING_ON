@@ -1,5 +1,5 @@
 # Users
-puts "Clearing all Users and Orders..."
+puts "Clearing all Users..."
 User.destroy_all if Rails.env == "DEVELOPMENT"
 # Order.destroy_all if Rails.env == "DEVELOPMENT"
 
@@ -15,9 +15,9 @@ User.create!(
    admin: true,
    )
 
-puts "Created Admin."
+puts "Created Admin!"
 
-puts "Creating 10 new Users with Orders..."
+puts "Creating 10 new Users..." # with Orders..."
 
 10.times do
   user = User.create!(
@@ -29,19 +29,19 @@ puts "Creating 10 new Users with Orders..."
     address: Faker::Address.street_address,
     admin: false,
     )
-end
 
   # order = Order.create!(user: user, deceased_first_name: Faker::Name.unique.first_name, deceased_last_name: Faker::Name.unique.last_name, date_of_death: Faker::Date.backward(14), invoice_amount: rand(100..10000))
+
+  # inventory = ["piano", "table", "bed", "jewellery", "car", "chair", "book", "carpet"]
 
   # rand(0..5).times do
   #   inventory = Inventory.create!(oder: order, description: inventory.sample, value: rand(100..10000))
   # end
 
-# puts "Created #{User.count} new Users and #{Order.count} new Orders."
+end
 
+puts "Created #{User.count} new Users!" # and #{Order.count} new Orders."
 
-
-inventory = ["piano", "table", "bed", "jewellery", "car", "chair", "book", "carpet"]
 
 # Services
 puts "Clearing all Services..."
@@ -78,6 +78,8 @@ service_item_2 = ServiceItem.create!(service: service_2, content: "forwrding add
 service_item_1 = ServiceItem.create!(service: service_3, content: "cancel contract", unit_price: 0, quantifiable: false, category: "task")
 service_item_2 = ServiceItem.create!(service: service_3, content: "type of contract", unit_price: 0, quantifiable: false, category: "information")
 service_item_3 = ServiceItem.create!(service: service_3, content: "name of provider", unit_price: 0, quantifiable: false, category: "information")
+
+puts "ExSeedingly succSeeded!!!"
 
 
 
