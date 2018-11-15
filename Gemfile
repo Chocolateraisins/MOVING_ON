@@ -9,6 +9,9 @@ gem 'puma'
 gem 'rails', '5.2.1'
 gem 'redis'
 
+# Faker Data for Seedfile
+gem 'faker'
+
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 5.0.9'
