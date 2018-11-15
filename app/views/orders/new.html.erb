@@ -1,0 +1,9 @@
+<h1>Orders#new</h1>
+
+<%= simple_form_for @order do |f| %>
+  <%= f.input :deceased_first_name, label: 'First name of the deceased', error: 'First name is mandatory, please specify one' %>
+  <%= f.input :deceased_last_name, label: 'Last name of the deceased', error: 'Last name is mandatory, please specify one' %>
+   <%= f.input :deceased_last_name, label: 'Last name of the deceased', error: 'Last name is mandatory, please specify one' %>
+   <%= f.input :date_of_death, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, discard_day: true, order: [:month, :year] %>
+  <%= f.button :submit %>
+<% end %>
