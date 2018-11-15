@@ -51,17 +51,7 @@ puts "Clearing all Users and Orders..."
 User.destroy_all if Rails.env == "DEVELOPMENT"
 Order.destroy_all if Rails.env == "DEVELOPMENT"
 
-puts "Creating 10 new Users with Orders..."
-
-10.times do
-  user = User.create!(email: Faker::Internet.unique.email, password: "aaaaaa")
-
-  order = Order.create!(user: user, deceased_first_name: Faker::Name.unique.first_name, deceased_last_name: Faker::Name.unique.last_name, date_of_death: Faker::Date.backward(14), invoice_amount: rand(100..10000))
-
-  rand(0..5).times do
-    inventory = Inventory.create!(oder: order, description: inventory.sample, value: rand(100..10000))
-  end
-
+puts "Creating Admin..."
 
 User.create!(
    first_name: "Rinou",
@@ -69,21 +59,31 @@ User.create!(
    email: "rinou.idder@netherlands.nl",
    phone: Faker::PhoneNumber.phone_number,
    address: Faker::Address.street_address,
-   password: "mynameisrinouidder",
+   password: "aaaaaa",
    admin: true,
    )
 
-20.times do |user|
- User.create!(
-   first_name: Faker::Name.first_name,
-   last_name: Faker::Name.last_name ,
-   email: Faker::Internet.email,
-   phone: Faker::PhoneNumber.phone_number,
-   address: Faker::Address.street_address,
-   password: [1,2,3,4,5,6,7,8,9,'a','t','b','d','u','x','o'].sample(6).join,
-   admin: false,
-   )
-end
+puts "Created Admin."
+
+puts "Creating 10 new Users with Orders..."
+
+10.times do
+  user = User.create!(
+    email: Faker::Internet.unique.email,
+    password: "aaaaaa",
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    phone: Faker::PhoneNumber.phone_number,
+    address: Faker::Address.street_address,
+    password: "aaaaaa",
+    admin: false,
+    )
+
+  order = Order.create!(user: user, deceased_first_name: Faker::Name.unique.first_name, deceased_last_name: Faker::Name.unique.last_name, date_of_death: Faker::Date.backward(14), invoice_amount: rand(100..10000))
+
+  rand(0..5).times do
+    inventory = Inventory.create!(oder: order, description: inventory.sample, value: rand(100..10000))
+  end
 
 
 
