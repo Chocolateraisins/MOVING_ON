@@ -1,35 +1,14 @@
 
-User.create!(
-   first_name: "Rinou",
-   last_name: "Idder",
-   email: "pinu.piddder@netherlands.nl",
-   phone: "1830803",
-   address: "dans ton cul",
-   password: "mynameisrinouidder",
-   admin: true,
-   )
-
-Order.create!(
-  user_id: User.all.sample.id,
-  status:"pending",
-  invoice_amount: 10,
-  deceased_first_name:"Bob",
-  deceased_last_name: "Sponge",
-  deceased_address: "the ocean",
-  date_of_death: Date.today,
-  )
-
 # Users
 puts "Clearing all Users..."
 User.destroy_all if Rails.env == "DEVELOPMENT"
-# Order.destroy_all if Rails.env == "DEVELOPMENT"
 
 puts "Creating Admin..."
 
 User.create!(
    first_name: "Rinou",
    last_name: "Idder",
-   email: "rinou.idder@netherlands.nl",
+   email: "rinou.iddder@gmail.com",
    phone: Faker::PhoneNumber.phone_number,
    address: Faker::Address.street_address,
    password: "aaaaaa",
@@ -50,18 +29,56 @@ puts "Creating 10 new Users..." # with Orders..."
     address: Faker::Address.street_address,
     admin: false,
     )
-
-  # order = Order.create!(user: user, deceased_first_name: Faker::Name.unique.first_name, deceased_last_name: Faker::Name.unique.last_name, date_of_death: Faker::Date.backward(14), invoice_amount: rand(100..10000))
-
-  # inventory = ["piano", "table", "bed", "jewellery", "car", "chair", "book", "carpet"]
-
-  # rand(0..5).times do
-  #   inventory = Inventory.create!(oder: order, description: inventory.sample, value: rand(100..10000))
-  # end
-
 end
 
-puts "Created #{User.count} new Users!" # and #{Order.count} new Orders."
+puts "Created #{User.count} new Users in total!"
+
+# ------------------------------------------------------
+
+# Orders and Inventories
+puts "Clearing all Orders and Invetories..."
+Order.destroy_all if Rails.env == "DEVELOPMENT"
+Inventory.destroy_all if Rails.env == "DEVELOPMENT"
+
+inventory = ["piano", "table", "bed", "jewellery", "car", "chair", "book", "carpet"]
+
+puts "Creating first random order..."
+
+order_1 = Order.create!(
+  user: User.find(2),
+  status: "pending",
+  invoice_amount: rand(100..10000),
+  deceased_first_name: Faker::Name.unique.first_name,
+  deceased_last_name: Faker::Name.unique.last_name,
+  deceased_address: Faker::Address.street_address,
+  date_of_death: Faker::Date.backward(14),
+  )
+
+puts "Adding Inventory..."
+
+  rand(3..7).times do
+  Inventory.create!(order: order_1, description: inventory.sample, value: rand(100..10000))
+  end
+
+puts "Creating second random order..."
+
+order_2 = Order.create!(
+  user: User.find(7),
+  status: "pending",
+  invoice_amount: rand(100..10000),
+  deceased_first_name: Faker::Name.unique.first_name,
+  deceased_last_name: Faker::Name.unique.last_name,
+  deceased_address: Faker::Address.street_address,
+  date_of_death: Faker::Date.backward(14),
+  )
+
+puts "Adding Inventory..."
+
+rand(3..7).times do
+  Inventory.create!(order: order_2, description: inventory.sample, value: rand(100..10000))
+  end
+
+puts "Created #{Order.count} Orders with a total of #{Inventory.count} Inventory items!"
 
 # ------------------------------------------------------
 
@@ -75,7 +92,7 @@ service_1 = Service.create!(name: "House Clearance")
 service_2 = Service.create!(name: "Mail Forwarding")
 service_3 = Service.create!(name: "Contract Cancellation")
 
-puts "Created #{Service.count} new services."
+puts "Created #{Service.count} new services!"
 
 # ------------------------------------------------------
 
@@ -101,6 +118,8 @@ service_item_2 = ServiceItem.create!(service: service_2, content: "forwrding add
 service_item_1 = ServiceItem.create!(service: service_3, content: "cancel contract", unit_price: 0, quantifiable: false, category: "task")
 service_item_2 = ServiceItem.create!(service: service_3, content: "type of contract", unit_price: 0, quantifiable: false, category: "information")
 service_item_3 = ServiceItem.create!(service: service_3, content: "name of provider", unit_price: 0, quantifiable: false, category: "information")
+
+puts "Created #{ServiceItem.count} ServiceItems!"
 
 # ------------------------------------------------------
 
