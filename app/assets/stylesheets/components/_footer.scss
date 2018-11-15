@@ -6,6 +6,10 @@
   height: 80px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
+
+
+  // overflow: hidden;
+
 }
 .footer-links {
   display: flex;
@@ -24,3 +28,8 @@
 .footer .fa-heart {
   color: #D23333;
 }
+
+html {
+  min-height: 100%;
+}
+
