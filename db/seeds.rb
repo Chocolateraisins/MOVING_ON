@@ -42,6 +42,7 @@ end
 
 puts "Created #{User.count} new Users!" # and #{Order.count} new Orders."
 
+# ------------------------------------------------------
 
 # Services
 puts "Clearing all Services..."
@@ -55,6 +56,7 @@ service_3 = Service.create!(name: "Contract Cancellation")
 
 puts "Created #{Service.count} new services."
 
+# ------------------------------------------------------
 
 # ServiceItems
 puts "Clearing all ServiceItems..."
@@ -78,6 +80,8 @@ service_item_2 = ServiceItem.create!(service: service_2, content: "forwrding add
 service_item_1 = ServiceItem.create!(service: service_3, content: "cancel contract", unit_price: 0, quantifiable: false, category: "task")
 service_item_2 = ServiceItem.create!(service: service_3, content: "type of contract", unit_price: 0, quantifiable: false, category: "information")
 service_item_3 = ServiceItem.create!(service: service_3, content: "name of provider", unit_price: 0, quantifiable: false, category: "information")
+
+# ------------------------------------------------------
 
 puts "ExSeedingly succSeeded!!!"
 
