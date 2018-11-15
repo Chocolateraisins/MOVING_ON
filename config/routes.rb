@@ -7,5 +7,4 @@ Rails.application.routes.draw do
     resources :inventories
     resources :service_item_orders
   end
-
 end
