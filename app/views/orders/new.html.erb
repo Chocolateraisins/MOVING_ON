@@ -1,1 +1,15 @@
 <h1>New order</h1>
+
+  <%= simple_form_for [@order] do |f| %>
+    <div class="form-inputs">
+    <%= f.input :deceased_first_name %>
+    <%= f.input :deceased_last_name%>
+    <%= f.input :deceased_address%>
+    <%= f.input :date_of_death %>
+        <%= f.button :submit, "Create order" %>
+      </div>
+    </div>
+  <% end %>
+
+
+
