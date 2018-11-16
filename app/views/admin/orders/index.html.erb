@@ -1,0 +1,9 @@
+<h1>Orders index</h1>
+
+<ul>
+  <% @orders.each do |order| %>
+  <h3>order #<%= order.id %></h3>
+  <li>Customer :<%= order.user.first_name %> <%= order.user.last_name %></li>
+  <li>Invoice: <%= order.invoice_amount %></li>
+  <% end %>
+</ul>
