@@ -3,10 +3,11 @@
 <div
   id="map"
   style="width: 100%;
-  height: 600px;"
+  height: 500px;"
   data-markers="<%= @markers.to_json %>"
 ></div>
 
+<div>
 <ul>
   <% @orders.each do |order| %>
   <h3>order #<%= order.id %></h3>
@@ -15,3 +16,4 @@
   <li>Address: <%= order.deceased_address %></li>
   <% end %>
 </ul>
+</div>

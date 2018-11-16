@@ -50,7 +50,7 @@ order_1 = Order.create!(
   invoice_amount: rand(100..10000),
   deceased_first_name: Faker::Name.unique.first_name,
   deceased_last_name: Faker::Name.unique.last_name,
-  deceased_address: Faker::Address.street_address,
+  deceased_address: "Frii Hotel, Bali",
   date_of_death: Faker::Date.backward(14),
   )
 
@@ -68,7 +68,7 @@ order_2 = Order.create!(
   invoice_amount: rand(100..10000),
   deceased_first_name: Faker::Name.unique.first_name,
   deceased_last_name: Faker::Name.unique.last_name,
-  deceased_address: Faker::Address.street_address,
+  deceased_address: "16, Villa Gaudelet",
   date_of_death: Faker::Date.backward(14),
   )
 
