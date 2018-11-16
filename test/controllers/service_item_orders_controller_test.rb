@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ServiceItemOrderControllerTest < ActionDispatch::IntegrationTest
+class ServiceItemOrdersControllerTest < ActionDispatch::IntegrationTest
   test "should get show" do
     get service_item_order_show_url
     assert_response :success
