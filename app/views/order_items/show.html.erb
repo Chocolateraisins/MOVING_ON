@@ -1,2 +1,14 @@
-<h1>OrderItem#show</h1>
-<p>Find me in app/views/order_item/show.html.erb</p>
+<%= @order %>
+
+<% Service.all.each do |service| %>
+  <h1><%= service.name %></h1>
+  <ul>
+  <% service.service_items.each do |item| %>
+    <li>
+      <%= item.content %> |
+
+      <%= @order.order_items.find_by(service_item: item).content %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
