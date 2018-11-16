@@ -31,8 +31,35 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if @order = Order.update(params[:id])
+    @order = Order.find(params[:id])
+
+    params[:order_items].each do |k, v|
+      order_item = OrderItem.find(k)
+      order_item.content = v
+      order_item.order = @order
+      order_item.save
+
     end
+
+    redirect_to order_order_item_path(@order)
+
+    # @order.order_items.each do |key, value|
+    #   byebug
+    #   @order.order_items.where(id: :key).first.update_attribute :content, :value
+    #   end
+
+
+
+
+
+      # order_item.id.each do |id|
+
+
+      # order_item.content = order_item.find(x).content
+
+      # @order.order_items.ids
+
+
   end
 
   def destroy
