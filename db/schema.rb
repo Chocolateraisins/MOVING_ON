@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 2018_11_15_080417) do
     t.index ["order_id"], name: "index_inventories_on_order_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "service_item_id"
+    t.string "content"
+    t.boolean "completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["service_item_id"], name: "index_order_items_on_service_item_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string "status"
     t.integer "invoice_amount"
@@ -35,17 +46,6 @@ ActiveRecord::Schema.define(version: 2018_11_15_080417) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "service_item_orders", force: :cascade do |t|
-    t.bigint "order_id"
-    t.bigint "service_item_id"
-    t.string "content"
-    t.boolean "completed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_service_item_orders_on_order_id"
-    t.index ["service_item_id"], name: "index_service_item_orders_on_service_item_id"
   end
 
   create_table "service_items", force: :cascade do |t|
@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(version: 2018_11_15_080417) do
   end
 
   add_foreign_key "inventories", "orders"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "service_items"
   add_foreign_key "orders", "users"
-  add_foreign_key "service_item_orders", "orders"
-  add_foreign_key "service_item_orders", "service_items"
   add_foreign_key "service_items", "services"
 end

@@ -13,6 +13,6 @@ Rails.application.routes.draw do
 
   resources :orders do
     resources :inventories
-    resources :service_item_orders
+    resources :order_items
   end
 end

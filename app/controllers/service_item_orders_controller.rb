@@ -1,4 +1,4 @@
-class ServiceItemOrdersController < ApplicationController
+class OrderItemsController < ApplicationController
 
   def index
     @order = Order.find(params[:order_id])

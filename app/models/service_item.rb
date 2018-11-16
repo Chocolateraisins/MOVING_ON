@@ -1,5 +1,5 @@
 class ServiceItem < ApplicationRecord
   belongs_to :service
-  has_many :service_item_orders, dependent: :nullify
-  accepts_nested_attributes_for :service_item_orders
+  has_many :order_items, dependent: :nullify
+  accepts_nested_attributes_for :order_items
 end

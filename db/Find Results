@@ -1,0 +1,102 @@
+Searching 171 files for "ServiceItemOrder"
+
+/Users/Stephen/code/Chocolateraisins/MOVING_ON/app/controllers/order_items_controller.rb:
+    1: class ServiceItemOrdersController < ApplicationController
+    2
+    3    def index
+
+/Users/Stephen/code/Chocolateraisins/MOVING_ON/app/models/order_item.rb:
+    1: class ServiceItemOrder < ApplicationRecord
+    2    belongs_to :order
+    3    belongs_to :service_item
+
+/Users/Stephen/code/Chocolateraisins/MOVING_ON/app/views/order_items/edit.html.erb:
+    1: <h1>ServiceItemOrder#edit</h1>
+    2  <p>Find me in app/views/order_item/edit.html.erb</p>
+    3
+
+/Users/Stephen/code/Chocolateraisins/MOVING_ON/app/views/order_items/index.html.erb:
+    1: <h1>ServiceItemOrder#index</h1>
+    2  <p>Find me in app/views/order_item/index.html.erb</p>
+    3
+
+/Users/Stephen/code/Chocolateraisins/MOVING_ON/app/views/order_items/show.html.erb:
+    1: <h1>ServiceItemOrder#show</h1>
+    2  <p>Find me in app/views/order_item/show.html.erb</p>
+    3
+
+/Users/Stephen/code/Chocolateraisins/MOVING_ON/db/seeds.rb:
+  125
+  126  # ServiceItemsOrders
+  127: puts "Clearing all ServiceItemOrders..."
+  128  ServiceItemsOrders.destroy_all if Rails.env == "DEVELOPMENT"
+  129
+  ...
+  132  type_of_contracts = ["phone", "electricity", "tv", "gas", "internet", "cleaner", "insurance"]
+  133
+  134: puts "Creating ServiceItemOrders for first Order..."
+  135
+  136: # ServiceItemOrder for Service 1, Order 1
+  137: order_item_1 = ServiceItemOrder.create!(order: order_1, service_item: service_item_1, content: rand(1..7), completed: false)
+  138: order_item_2 = ServiceItemOrder.create!(order: order_1, service_item: service_item_2, content: rand(30..250), completed: false)
+  139: order_item_3 = ServiceItemOrder.create!(order: order_1, service_item: service_item_3, content: property_types.sample, completed: false)
+  140: order_item_4 = ServiceItemOrder.create!(order: order_1, service_item: service_item_4, content: Faker::Date.forward(30), completed: false)
+  141: order_item_5 = ServiceItemOrder.create!(order: order_1, service_item: service_item_5, content: belongings_actions.sample, completed: false)
+  142: order_item_6 = ServiceItemOrder.create!(order: order_1, service_item: service_item_6, content: "yes", completed: false)
+  143
+  144: # ServiceItemOrder for Service 2, Order 1
+  145: order_item_7 = ServiceItemOrder.create!(order: order_1, service_item: service_item_7, content: "yes", completed: false)
+  146: order_item_8 = ServiceItemOrder.create!(order: order_1, service_item: service_item_8, content: Faker::Address.street_address, completed: false)
+  147
+  148: # ServiceItemOrder for Service 3, Order 1
+  149: order_item_9 = ServiceItemOrder.create!(order: order_1, service_item: service_item_9, content: "yes", completed: false)
+  150: order_item_10 = ServiceItemOrder.create!(order: order_1, service_item: service_item_10, content: type_of_contracts.sample, completed: false)
+  151: order_item_11 = ServiceItemOrder.create!(order: order_1, service_item: service_item_11, content: "my defined provider", completed: false)
+  152
+  153: puts "Created ServiceItemOrders for first Order!"
+  154
+  155: puts "Creating ServiceItemOrders for second Order..."
+  156
+  157: # ServiceItemOrder for Service 1, Order 2
+  158: order_item_1 = ServiceItemOrder.create!(order: order_2, service_item: service_item_1, content: rand(1..7), completed: false)
+  159: order_item_2 = ServiceItemOrder.create!(order: order_2, service_item: service_item_2, content: rand(30..250), completed: false)
+  160: order_item_3 = ServiceItemOrder.create!(order: order_2, service_item: service_item_3, content: property_types.sample, completed: false)
+  161: order_item_4 = ServiceItemOrder.create!(order: order_2, service_item: service_item_4, content: Faker::Date.forward(30), completed: false)
+  162: order_item_5 = ServiceItemOrder.create!(order: order_2, service_item: service_item_5, content: belongings_actions.sample, completed: false)
+  163: order_item_6 = ServiceItemOrder.create!(order: order_2, service_item: service_item_6, content: "yes", completed: false)
+  164
+  165: # ServiceItemOrder for Service 2, Order 2
+  166: order_item_7 = ServiceItemOrder.create!(order: order_2, service_item: service_item_7, content: "yes", completed: false)
+  167: order_item_8 = ServiceItemOrder.create!(order: order_2, service_item: service_item_8, content: Faker::Address.street_address, completed: false)
+  168
+  169: # ServiceItemOrder for Service 3, Order 2
+  170: order_item_9 = ServiceItemOrder.create!(order: order_2, service_item: service_item_9, content: "yes", completed: false)
+  171: order_item_10 = ServiceItemOrder.create!(order: order_2, service_item: service_item_10, content: type_of_contracts.sample, completed: false)
+  172: order_item_11 = ServiceItemOrder.create!(order: order_2, service_item: service_item_11, content: "my defined provider", completed: false)
+  173
+  174: puts "Created ServiceItemOrders for second Order!"
+  175
+  176: puts "Created #{ServiceItemOrder.count} ServiceItemOrders for #{Order.count} Orders involving #{Service.count} Services!"
+  177
+  178  # ------------------------------------------------------
+
+/Users/Stephen/code/Chocolateraisins/MOVING_ON/db/migrate/20181114100322_create_order_items.rb:
+    1: class CreateServiceItemOrders < ActiveRecord::Migration[5.2]
+    2    def change
+    3      create_table :order_items do |t|
+
+/Users/Stephen/code/Chocolateraisins/MOVING_ON/test/controllers/order_items_controller_test.rb:
+    1  require 'test_helper'
+    2
+    3: class ServiceItemOrdersControllerTest < ActionDispatch::IntegrationTest
+    4    test "should get show" do
+    5      get order_item_show_url
+
+/Users/Stephen/code/Chocolateraisins/MOVING_ON/test/models/order_item_test.rb:
+    1  require 'test_helper'
+    2
+    3: class ServiceItemOrderTest < ActiveSupport::TestCase
+    4    # test "the truth" do
+    5    #   assert true
+
+43 matches across 9 files
