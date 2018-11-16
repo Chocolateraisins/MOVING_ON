@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>OrderItem#index</h1>
+  <p>Find me in app/views/order_item/index.html.erb</p>
+
+
+  <!-- way 2 -->
+  <% Service.all.each do |service| %>
+    <h1><%= service.name %></h1>
+    <ul>
+    <% service.service_items.each do |item| %>
+      <li>
+        <%= item.content %> |
+        <%= @order.order_items.find_by(service_item: item).content %>
+      </li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>
+
+
+
+
+
+<!-- 1. List of services that are part of the order (e.g. contracts) -->
+  <!-- 2. For each service, show the service items (e.g. type of contract -->
+   <!-- 3. for each serive item, show the order item (TV) -->
+
+<!--
+   Contracts (service)
+      1. type:(SI) TV contract(OI), service provider:(SI) Sky(OI)
+      2. type: phone contract, service provider: vodafone
+      3.
+
+  Mail forwarding
+ -->
