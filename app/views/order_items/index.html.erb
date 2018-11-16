@@ -1,35 +1,31 @@
+
 <div class="container">
-  <h1>OrderItem#index</h1>
-  <p>Find me in app/views/order_item/index.html.erb</p>
-
-
-  <!-- way 2 -->
-  <% Service.all.each do |service| %>
-    <h1><%= service.name %></h1>
-    <ul>
-    <% service.service_items.each do |item| %>
-      <li>
-        <%= item.content %> |
-        <%= @order.order_items.find_by(service_item: item).content %>
-      </li>
+  <div class="row">
+    <%= form_for @order do |f| %>
+      <% Service.all.each do |service| %>
+          <h1><%= service.name %></h1>
+          <% service.service_items.each do |item| %>
+            <div class="form-group">
+              <%= item.content %>
+              <!-- Checking if there is an item -->
+              <% order_item = @order.order_items.find_by(service_item: item) || OrderItem.create(service_item: item, order: @order) %>
+                <% if item.quantifiable %>
+                  <input type="number" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]">
+                <% else %>
+                  <input type="text" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]">
+                <% end %>
+            </div>
+          <% end %>
+        <% end %>
+        <%= f.submit %>
     <% end %>
-    </ul>
-  <% end %>
+  </div>
 </div>
 
-
-
-
-
-<!-- 1. List of services that are part of the order (e.g. contracts) -->
-  <!-- 2. For each service, show the service items (e.g. type of contract -->
-   <!-- 3. for each serive item, show the order item (TV) -->
-
-<!--
-   Contracts (service)
-      1. type:(SI) TV contract(OI), service provider:(SI) Sky(OI)
-      2. type: phone contract, service provider: vodafone
-      3.
-
-  Mail forwarding
- -->
+<%#= fields_for order_item do |form|%>
+                <%# if item.quantifiable %>
+                  <%#= form.number_field :content %>
+                <%# else %>
+                  <%#= form.text_field :content %>
+                <%# end %>
+              <%# end %>
