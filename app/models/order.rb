@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
   belongs_to :user
   has_many :inventories
-  has_many :service_item_orders, dependent: :nullify
+  has_many :order_items, dependent: :nullify
 end
