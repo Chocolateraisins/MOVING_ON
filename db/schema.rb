@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2018_11_16_065444) do
     t.string "content"
     t.bigint "service_id"
     t.integer "unit_price"
-    t.boolean "quantifiable"
+    t.string "data_type", default: "text"
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

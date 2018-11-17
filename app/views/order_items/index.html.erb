@@ -1,31 +1,24 @@
-
 <div class="container">
   <div class="row">
-    <%= form_for @order do |f| %>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 form">
+      <%= form_for @order do |f| %>
       <% Service.all.each do |service| %>
-          <h1><%= service.name %></h1>
-          <% service.service_items.each do |item| %>
-            <div class="form-group">
-              <%= item.content %>
-              <!-- Checking if there is an item -->
-              <% order_item = @order.order_items.find_by(service_item: item) || OrderItem.create(service_item: item, order: @order) %>
-                <% if item.quantifiable %>
-                  <input type="number" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]">
-                <% else %>
-                  <input type="text" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]">
-                <% end %>
-            </div>
-          <% end %>
+        <h1><%= service.name %></h1>
+        <% service.service_items.each do |item| %>
+        <div class="form-group">
+          <%= item.content %>
+          <!-- Checking if there is an item -->
+          <% order_item = @order.order_items.find_by(service_item: item) || OrderItem.create(service_item: item, order: @order) %>
+          <input type="<%= item.data_type %>" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]" class=“order_item_form” id="<%= 'order_deceased_address' if item.content.include?("address") %>">
+        </div>
         <% end %>
-        <%= f.submit %>
-    <% end %>
+      <% end %>
+      <%= f.submit %>
+      <% end %>
+    </div>
   </div>
 </div>
 
-<%#= fields_for order_item do |form|%>
-                <%# if item.quantifiable %>
-                  <%#= form.number_field :content %>
-                <%# else %>
-                  <%#= form.text_field :content %>
-                <%# end %>
-              <%# end %>
+
+
+

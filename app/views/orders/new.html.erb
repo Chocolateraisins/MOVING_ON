@@ -1,12 +1,13 @@
 <div class="container">
-
-  <h1>Orders#new</h1>
-
-  <%= simple_form_for @order do |f| %>
-  <%= f.input :deceased_first_name, label: 'First name of the deceased', error: 'First name is mandatory, please specify one' %>
-  <%= f.input :deceased_last_name, label: 'Last name of the deceased', error: 'Last name is mandatory, please specify one' %>
-  <%= f.input :deceased_address, label: 'Address of the deceased', error: 'Address is mandatory, please specify one'%>
-  <%= f.input :date_of_death, as: :date, html5: true %>
-  <%= f.button :submit %>
-  <% end %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 form">
+    <%= simple_form_for @order do |f| %>
+    <%= f.input :deceased_first_name, label: 'First name of the deceased', error: 'First name is mandatory, please specify one' %>
+    <%= f.input :deceased_last_name, label: 'Last name of the deceased', error: 'Last name is mandatory, please specify one' %>
+    <%= f.input :deceased_address, label: 'Address of the deceased', error: 'Address is mandatory, please specify one'%>
+    <%= f.input :date_of_death, as: :date, html5: true %>
+    <%= f.button :submit, class:"btn btn-primary btn-lg"%>
+    <% end %>
+    </div>
+  </div>
 </div>
