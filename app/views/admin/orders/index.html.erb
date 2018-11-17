@@ -7,13 +7,13 @@
       <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Users</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Tasks</a>
+      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Pending tasks</a>
     </li>
   </ul>
+
   <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show in active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <!-- Orders tab -->
-      <div class="tab-1">
+
+    <div class="tab-pane fade show in active" id="home" role="tabpanel" aria-labelledby="home-tab"> <!-- Orders tab -->
         <h3>Orders</h3>
         <div
         id="map"
@@ -27,40 +27,56 @@
           <li>Customer :<%= order.user.first_name %> <%= order.user.last_name %></li>
           <li>Invoice: <%= order.invoice_amount %></li>
           <li>Address: <%= order.deceased_address %></li>
+          <button type="button" class="btn btn-danger"><%= button_to "Cancel order", admin_order_path(order), method: :delete, data: {confirm: "Are you sure you want to cancel this order?"} %></button>
           <% end %>
         </ul>
-      </div>
     </div>
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <div class="2"> <!-- Users tab -->
+
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> <!-- Users tab -->
         <h3>Users</h3>
-        <ul>
           <% User.all.each do |user| %>
           <h4>Customer :<%= user.first_name %> <%= user.last_name %></h4>
-          <li>Orders: <%= user.orders.count %></li>
+          <p>Orders: <%= user.orders.count %></p>
           <% end %>
-        </ul>
-      </div>
     </div>
-    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-      <div class="3"> <!-- Pending tab -->
+
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"> <!-- Pending tab -->
         <h3>Pending tasks</h3>
         <ul>
           <% @orders.each do |order| %>
-          <% if order.status == "pending" %>
-          <h4>order #<%= order.id %></h4>
-          <% order.order_items.each do |order_item| %>
-          <% if order_item.completed == false && order_item.service_item.category == "task" %>
-          <%= order_item.service_item.content %>
-          <%= order_item.content %>
-          <% end %>
-          <% end %>
-          <% end %>
+            <% if order.status == "pending" %>
+            <h4>order #<%= order.id %></h4>
+              <% order.order_items.each do |order_item| %>
+                <% if order_item.completed == false && order_item.service_item.category == "task" %>
+                  <li><%= order_item.service_item.content %> : <%= order_item.content %></li>
+                  <p>Mark as completed?</p>
+
+                  <p><%= order_item.completed %></p>
+
+                  <%= simple_form_for [order, order_item], url: admin_order_order_item_path(order, order_item), method: :patch do |f| %>
+                    <%= f.input :completed, value: !order_item.completed, as: :hidden %>
+                    <% if order_item.completed %>
+                      <%= f.button :submit, "mark as uncomplete" %>
+                    <% else %>
+                      <%= f.button :submit, "mark as complete" %>
+                    <% end %>
+                  <% end %>
+
+                  <%#= render "admin/orders/btn_status", order_item: order_item, order: order %>
+                <!-- <label class="switch" >
+                  <input type="checkbox">
+                  <span class="slider round"></span>
+                </label> -->
+                <br>
+                <% end %>
+             <% end %>
+            <% end %>
           <% end %>
         </ul>
-      </div>
     </div>
+
   </div>
+
 </div>
 
 
