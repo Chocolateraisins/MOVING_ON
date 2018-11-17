@@ -6,9 +6,9 @@ User.destroy_all if Rails.env == "DEVELOPMENT"
 puts "Creating Admin..."
 
 User.create!(
-   first_name: "Rinou",
-   last_name: "Idder",
-   email: "rinou.iddder@gmail.com",
+   first_name: "Ellyn",
+   last_name: "Bouscas",
+   email: "ellyn@gmail.com",
    phone: Faker::PhoneNumber.phone_number,
    address: Faker::Address.street_address,
    password: "aaaaaa",
@@ -103,21 +103,21 @@ ServiceItem.destroy_all if Rails.env == "DEVELOPMENT"
 puts "Creating ServiceItems for #{Service.count} Services..."
 
 # ServiceItems for Service 1
-service_item_1 = ServiceItem.create!(service: service_1, content: "number of rooms", unit_price: 0, quantifiable: true, category: "information")
-service_item_2 = ServiceItem.create!(service: service_1, content: "total area", unit_price: 10, quantifiable: true, category: "information")
-service_item_3 = ServiceItem.create!(service: service_1, content: "property type", unit_price: 0, quantifiable: false, category: "information")
-service_item_4 = ServiceItem.create!(service: service_1, content: "moving date time", unit_price: 0, quantifiable: true, category: "information")
-service_item_5 = ServiceItem.create!(service: service_1, content: "belongings action", unit_price: 0, quantifiable: false, category: "task")
-service_item_6 = ServiceItem.create!(service: service_1, content: "cleaning", unit_price: 5, quantifiable: false, category: "task")
+service_item_1 = ServiceItem.create!(service: service_1, content: "number of rooms", unit_price: 0, data_type: "number", category: "information")
+service_item_2 = ServiceItem.create!(service: service_1, content: "total area", unit_price: 10, data_type: "number", category: "information")
+service_item_3 = ServiceItem.create!(service: service_1, content: "property type", unit_price: 0, category: "information")
+service_item_4 = ServiceItem.create!(service: service_1, content: "moving date time", unit_price: 0, data_type: "datetime-local", category: "information")
+service_item_5 = ServiceItem.create!(service: service_1, content: "belongings action", unit_price: 0, category: "task")
+service_item_6 = ServiceItem.create!(service: service_1, content: "cleaning", unit_price: 5, category: "task")
 
 # ServiceItems for Service 2
-service_item_7 = ServiceItem.create!(service: service_2, content: "mail forwarding", unit_price: 15, quantifiable: false, category: "task")
-service_item_8 = ServiceItem.create!(service: service_2, content: "forwrding address", unit_price: 0, quantifiable: false, category: "information")
+service_item_7 = ServiceItem.create!(service: service_2, content: "mail forwarding", unit_price: 15, category: "task")
+service_item_8 = ServiceItem.create!(service: service_2, content: "forwrding address", unit_price: 0, category: "information")
 
 # ServiceItems for Service 3
-service_item_9 = ServiceItem.create!(service: service_3, content: "cancel contract", unit_price: 0, quantifiable: false, category: "task")
-service_item_10 = ServiceItem.create!(service: service_3, content: "type of contract", unit_price: 0, quantifiable: false, category: "information")
-service_item_11 = ServiceItem.create!(service: service_3, content: "name of provider", unit_price: 0, quantifiable: false, category: "information")
+service_item_9 = ServiceItem.create!(service: service_3, content: "cancel contract", unit_price: 0, category: "task")
+service_item_10 = ServiceItem.create!(service: service_3, content: "type of contract", unit_price: 0, category: "information")
+service_item_11 = ServiceItem.create!(service: service_3, content: "name of provider", unit_price: 0, category: "information")
 
 puts "Created #{ServiceItem.count} ServiceItems!"
 
