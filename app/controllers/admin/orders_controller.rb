@@ -16,4 +16,11 @@ class Admin::OrdersController < ApplicationController
         }
       end
   end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    redirect_to admin_orders_path
+  end
+
 end

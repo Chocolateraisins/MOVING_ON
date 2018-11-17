@@ -1,9 +1,7 @@
-//= require rails-ujs
-//= require_tree .
+// = require rails-ujs
+// = require_tree
 
 
-//= require rails-ujs
-//= require_tree .
 
 var ml4 = {};
 ml4.opacityIn = [0,1];
