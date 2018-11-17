@@ -4,7 +4,7 @@ class CreateServiceItems < ActiveRecord::Migration[5.2]
       t.string :content
       t.references :service, foreign_key: true
       t.integer :unit_price
-      t.boolean :quantifiable
+      t.string :data_type, default: "text"
       t.string :type
 
       t.timestamps
