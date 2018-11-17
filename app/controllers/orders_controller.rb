@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
       flash[:notice] = "Please log in to create a new order."
     elsif
       @order.save
-      redirect_to order_path(@order)
+      redirect_to order_order_items_path(@order)
     else
       render :new
     end
