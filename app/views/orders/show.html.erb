@@ -1,13 +1,31 @@
-<h1>Orders show</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 main-card">
 
-<h3>Order #<%= @order.id %></h3>
-<li>Customer: <%= @order.user.first_name %> <%= @order.user.last_name %></li>
-<li>Status: <%= @order.status %></li>
-<li>Invoice: <%= @order.invoice_amount %></li>
-<li>Deceased identity: <%= @order.deceased_first_name %> <%= @order.deceased_last_name %></li>
-<li><%= @order.deceased_address %></li>
+      <h1>Services Order Overview</h1>
+      <%= link_to "Back to Overview", orders_path,class:"btn btn-primary btn-sm" %>
 
+      <h3>Order Details <!-- #<%= @order.id %> --></h3>
+      <li>Customer: <%= @order.user.first_name %> <%= @order.user.last_name %></li>
+      <li>Status: <%= @order.status %></li>
+      <li>Invoice: <%= @order.invoice_amount %></li>
+      <li>Deceased identity: <%= @order.deceased_first_name %> <%= @order.deceased_last_name %></li>
+      <li><%= @order.deceased_address %></li>
 
-
-
-
+      <h1>Services we will help you with</h1>
+      <%= form_for @order do |f| %>
+        <% Service.all.each do |service| %>
+          <h3><%= service.name %></h3>
+          <% service.service_items.each do |item| %>
+            <div class="form-group">
+              <%= item.content %>
+              <!-- Checking if there is an item -->
+              <% order_item = @order.order_items.find_by(service_item: item) %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= link_to "Edit this order", order_order_items_path(@order),class:"btn btn-danger btn-sm" %>
+    </div>
+  </div>
+</div>
