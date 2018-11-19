@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'orders/index'
   end
-  get 'admin_orders/index'
+
   devise_for :users
   root to: 'pages#home'
 
@@ -13,10 +12,13 @@ Rails.application.routes.draw do
     end
   end
 
-
-
   resources :orders do
     resources :inventories
     resources :order_items
   end
+
+  resources :services do
+    resources :service_items
+  end
+
 end
