@@ -32,7 +32,7 @@ class ServicesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @service.save
+      if @service.update(service_params)
         format.html { redirect_to @service, notice: 'Service was successfully updated.' }
         format.json { render :show, status: :created, location: @service }
       else
@@ -40,6 +40,7 @@ class ServicesController < ApplicationController
         format.json { render json: @service.errors, status: :unprocessable_entity }
       end
     end
+  end
 
     # params[:service_items].each do |k, v|
     #   service_items = ServiceItem.find(k)
@@ -48,7 +49,6 @@ class ServicesController < ApplicationController
     #   service_items.save
     # end
     # redirect_to service_service_item_path(@service)
-  end
 
 # create_table "service_items", force: :cascade do |t|
 #     t.string "content"
@@ -61,8 +61,14 @@ class ServicesController < ApplicationController
 #     t.index ["service_id"], name: "index_service_items_on_service_id"
 #   end
 
+def destroy
+  @service.destroy
+    # redirect_to services_path
 
-  def destroy
+    respond_to do |format|
+      format.html { redirect_to services_path, notice: 'Service was successfully deleted.' }
+      format.json { head :no_content }
+    end
   end
 
   private
