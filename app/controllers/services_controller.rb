@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   def new
     @service = Service.new
@@ -17,7 +17,6 @@ class ServicesController < ApplicationController
         format.json { render json: @service.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
   def show
@@ -73,7 +72,7 @@ def destroy
 
   private
 
-  def set_order
+  def set_service
     @service = Service.find(params[:id])
   end
 
