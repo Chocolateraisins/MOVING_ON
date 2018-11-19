@@ -1,23 +1,53 @@
-<h3>Users</h3>
+<div class="container">
+  <div class="row">
 
-<h4>Total users</h4>
-<%= User.all.count %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://res.cloudinary.com/dxzgio39l/image/upload/v1542622882/graveyard.jpg');">
+        <h4>Total users</h4>
+        <%= User.all.count %>
+      </div>
+    </div>
 
-<h4>Purchasing users</h4>
-  <% active_users = Array.new %>
-    <% User.all.each do |any_user| %>
-      <% unless any_user.orders.count == 0 %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://res.cloudinary.com/dxzgio39l/image/upload/v1542622882/graveyard.jpg');">
+        <h4>Purchasing users</h4>
+        <% active_users = Array.new %>
+        <% User.all.each do |any_user| %>
+        <% unless any_user.orders.count == 0 %>
         <% active_users << any_user %>
-    <% end %>
-  <% end %>
-<%= active_users.count %>
+        <% end %>
+        <% end %>
+        <%= active_users.count %>
+      </div>
+    </div>
 
-  <% User.all.each do |user| %>
-  <h4>Customer :<%= user.first_name %> <%= user.last_name %></h4>
-  <p>Orders: <%= user.orders.count %></p>
-    <% unless user.orders.count == 0 %>
-      <%= user.orders %>
-    <% end %>
-    <button type="button" class="btn btn-danger"><%= button_to "Delete user", user_registration_path, method: :delete, data: {confirm: "Are you sure you want to delete this user?"} %></button>
-  <% end %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://res.cloudinary.com/dxzgio39l/image/upload/v1542622882/graveyard.jpg');">
+        <h4>Active users</h4>
+        <% users = Order.where(:created_at => Date.parse("01-06-2018")..Date.parse("01-12-2018")).map {|o| o.user} %>
+        <%= users.count %>
+      </div>
+    </div>
 
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="container">
+  <div class="row">
+    <% User.all.each do |user| %>
+      <div class="col-xs-6 col-sm-2">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://res.cloudinary.com/dxzgio39l/image/upload/v1542622875/skull.jpg');">
+          <h5>Customer :<%= user.first_name %> <%= user.last_name %></h5>
+          <p>Orders: <%= user.orders.count %></p>
+          <% unless user.orders.count == 0 %>
+            <%= user.orders.count %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
