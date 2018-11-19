@@ -1,4 +1,4 @@
-<h1>Orders show</h1>
+<h1>Order #<%= @order.id %> details</h1>
 
 <h3>Order #<%= @order.id %></h3>
 <li>Customer: <%= @order.user.first_name %> <%= @order.user.last_name %></li>
@@ -7,6 +7,11 @@
 <li>Deceased identity: <%= @order.deceased_first_name %> <%= @order.deceased_last_name %></li>
 <li><%= @order.deceased_address %></li>
 
+  <% @order.order_items.each do |order_item| %>
+    <% if order_item.completed == false && order_item.service_item.category == "task" %>
+      <li><%= order_item.service_item.content %> : <%= order_item.content %></li>
+    <% end %>
+  <% end %>
 
 
 

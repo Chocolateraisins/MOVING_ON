@@ -1,0 +1,21 @@
+<h3>Tasks</h3>
+
+<div class="container">
+<form action="/orders" class="index-filter custom-dropdown text-center">
+
+  <select name="filter_pending">
+    <option value="" disabled selected>Chose your filter</option>
+    <option value="" selected>All tasks</option>
+
+      <option value="" disabled selected>Select by status</option>
+        <% OrderItem.all.each do |option| %>
+          <option <%= 'selected' if option.completed == false %> value="<%= option %>">Pending</option>
+        <% end %>
+
+  </select>
+  <input type="submit" value="Search">
+</form>
+
+</div>
+
+

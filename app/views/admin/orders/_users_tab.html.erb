@@ -1,0 +1,23 @@
+<h3>Users</h3>
+
+<h4>Total users</h4>
+<%= User.all.count %>
+
+<h4>Purchasing users</h4>
+  <% active_users = Array.new %>
+    <% User.all.each do |any_user| %>
+      <% unless any_user.orders.count == 0 %>
+        <% active_users << any_user %>
+    <% end %>
+  <% end %>
+<%= active_users.count %>
+
+  <% User.all.each do |user| %>
+  <h4>Customer :<%= user.first_name %> <%= user.last_name %></h4>
+  <p>Orders: <%= user.orders.count %></p>
+    <% unless user.orders.count == 0 %>
+      <%= user.orders %>
+    <% end %>
+    <button type="button" class="btn btn-danger"><%= button_to "Delete user", user_registration_path, method: :delete, data: {confirm: "Are you sure you want to delete this user?"} %></button>
+  <% end %>
+
