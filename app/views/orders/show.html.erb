@@ -1,3 +1,5 @@
+
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 main-card">
@@ -11,20 +13,33 @@
       <li>Invoice: <%= @order.invoice_amount %></li>
       <li>Deceased identity: <%= @order.deceased_first_name %> <%= @order.deceased_last_name %></li>
       <li><%= @order.deceased_address %></li>
+      <% order_total = @order_total %>
+      <h4> Order Total <%= @order_total %> </h4>
 
       <h1>Services we will help you with</h1>
-      <%= form_for @order do |f| %>
-        <% Service.all.each do |service| %>
+      <% @order_total = 0 %>
+        <% @services.each do |service| %>
+        <% @service_subtotal = 0 %>
           <h3><%= service.name %></h3>
           <% service.service_items.each do |item| %>
             <div class="form-group">
               <%= item.content %>
-              <!-- Checking if there is an item -->
-              <% order_item = @order.order_items.find_by(service_item: item) %>
+              <% order_item = @order.order_items.find_by(service_item: item) || OrderItem.create(service_item: item, order: @order) %>
+              <!-- checking if the service item takes a number as the corresponding order item -->
+              <% if item.data_type == "number" %>
+                <% @service_price = order_item.content.to_i * item.unit_price.to_i %>
+                <% @service_subtotal += @service_price %>
+                <!-- checking if the service takes a 'yes/no' input-->
+              <% elsif order_item.content == "yes" %>
+                <% @service_price = item.unit_price.to_i %>
+                <% @service_subtotal += @service_price %>
+              <% end %>
             </div>
           <% end %>
+        <h4> Subtotal <%= @service_subtotal %> </h4>
+        <% @order_total += @service_subtotal %>
         <% end %>
-      <% end %>
+        <h4> Order Total <%= @order_total %> </h4>
       <%= link_to "Edit this order", order_order_items_path(@order),class:"btn btn-danger btn-sm" %>
     </div>
   </div>

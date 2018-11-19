@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user = current_user
     if @order.user == nil
-      redirect to root_path
+      redirect_to root_path
       flash[:notice] = "Please log in to create a new order."
     elsif
       @order.save
@@ -24,6 +24,9 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @services = Service.all
+    # @order_total = 0
+    # @service_subtotal = 0
   end
 
   def edit
