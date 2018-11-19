@@ -88,9 +88,9 @@ Service.destroy_all if Rails.env == "DEVELOPMENT"
 
 puts "Creating Services House Clearance, Mail Forwarding, Contract Cancellation"
 
-service_1 = Service.create!(name: "House Clearance")
-service_2 = Service.create!(name: "Mail Forwarding")
-service_3 = Service.create!(name: "Contract Cancellation")
+service_1 = Service.create!(name: "House Clearance", description: "This service includes cleaning, moving, clearing and taking care of belongings.")
+service_2 = Service.create!(name: "Mail Forwarding", description: "This service will make sure all mail gets forwarded to a specified address.")
+service_3 = Service.create!(name: "Contract Cancellation", description: "This service will cancel all contracts related to the deceased's home.")
 
 puts "Created #{Service.count} new services!"
 

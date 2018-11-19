@@ -1,0 +1,32 @@
+<h1>Services index</h1>
+
+<ul>
+  <% @services.each do |service| %>
+  <h3>Service <%= service.id %>: <%= service.name %></h3>
+  <%= link_to 'Show', service, class:"btn btn-primary" %>
+  <%= link_to 'Edit', edit_service_path(service), class:"btn btn-primary" %>
+  <%= link_to 'Delete service', service, method: :delete, data: { confirm: "Are you sure you want to delete the service #{service.name.upcase}?" }, class:"btn btn-danger" %>
+    <% service.service_items.each do |service_item| %>
+      <li>
+        Content:
+        <%= service_item.content%>
+        - Unit price:
+        <%= service_item.unit_price%>
+        - Date type:
+        <%= service_item.data_type%>
+      </li>
+      <%= link_to 'Show', service, class:"btn btn-primary" %>
+      <%= link_to 'Edit', edit_service_path(service), class:"btn btn-primary" %>
+      <%= link_to 'Delete', service, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+      <br>
+    <% end %>
+    <%= link_to 'Add Service Item', new_service_path, class:"btn btn-primary" %>
+  <% end %>
+</ul>
+  <%= link_to 'Add Service', new_service_path, class:"btn btn-primary" %>
+
+
+<!-- <%#= order.user.first_name %> <%#= order.user.last_name %></li>
+  <li>Invoice: <%#= order.invoice_amount %> -->
+
+
