@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :order_items
   end
 
-  resources :services
+  resources :services do
+    resources :service_items
+  end
 
 end

@@ -1,2 +1,21 @@
-<h1>Service#edit</h1>
-<p>Find me in app/views/service/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 form">
+      <h1>Edit Service</h1>
+      <%= simple_form_for [@service] do |f| %>
+        <div class="form-inputs">
+          <%= f.input :name %>
+          <%= f.input :description%>
+          <%= f.button :submit, class:"btn btn-primary btn-lg"%>
+          <%= link_to 'Back to Services', services_path, class:"btn btn-primary btn-lg"%>
+          <%= link_to 'Delete service', @service, method: :delete, data: { confirm: "Are you sure you want to delete the service #{@service.name.upcase}?" }, class:"btn btn-danger" %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
