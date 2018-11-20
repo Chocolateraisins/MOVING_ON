@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1 form">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 main-card">
       <% if @order.order_items.exists?%>
-      <%= link_to "Back to Order Overview", orders_path,class:"btn btn-info btn-sm" %>
+      <%= link_to "Back to Order Overview", orders_path,class:"btn btn-primary btn-sm" %>
       <% end %>
       <%= form_for @order do |f| %>
       <% Service.all.each do |service| %>
@@ -16,7 +16,7 @@
         </div>
         <% end %>
       <% end %>
-      <%= f.button :submit, class:"btn btn-primary btn-sm" %>
+      <%= f.button :submit, class:"btn btn-info btn-sm" %>
       <% end %>
     </div>
   </div>
