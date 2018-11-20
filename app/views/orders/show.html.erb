@@ -1,5 +1,11 @@
 
 
+  <% @order.order_items.each do |order_item| %>
+    <% if order_item.completed == false && order_item.service_item.category == "task" %>
+      <li><%= order_item.service_item.content %> : <%= order_item.content %></li>
+    <% end %>
+  <% end %>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 main-card">
@@ -19,28 +25,18 @@
       <h1>Services we will help you with</h1>
       <% @order_total = 0 %>
         <% @services.each do |service| %>
-        <% @service_subtotal = 0 %>
           <h3><%= service.name %></h3>
           <% service.service_items.each do |item| %>
             <div class="form-group">
-              <%= item.content %>
-              <% order_item = @order.order_items.find_by(service_item: item) || OrderItem.create(service_item: item, order: @order) %>
-              <!-- checking if the service item takes a number as the corresponding order item -->
-              <% if item.data_type == "number" %>
-                <% @service_price = order_item.content.to_i * item.unit_price.to_i %>
-                <% @service_subtotal += @service_price %>
-                <!-- checking if the service takes a 'yes/no' input-->
-              <% elsif order_item.content == "yes" %>
-                <% @service_price = item.unit_price.to_i %>
-                <% @service_subtotal += @service_price %>
-              <% end %>
+            <% order_item = @order.order_items.find_by(service_item: item)%>
+            <%= item.content %> | <%= order_item.content %>
             </div>
           <% end %>
-        <h4> Subtotal <%= @service_subtotal %> </h4>
-        <% @order_total += @service_subtotal %>
+        <h4> Subtotal <%= @order.price_per_service(service) %> </h4>
         <% end %>
-        <h4> Order Total <%= @order_total %> </h4>
-      <%= link_to "Edit this order", order_order_items_path(@order),class:"btn btn-danger btn-sm" %>
+        <h4> Order Total <%= @order.invoice_amount %> </h4>
+      <%= link_to "Edit this order", order_order_items_path(@order),class:"btn btn-info btn-sm" %>
+      <%= link_to "Delete this order", order_path(@order), method: :delete, class:"btn btn-danger btn-sm" %>
     </div>
   </div>
 </div>

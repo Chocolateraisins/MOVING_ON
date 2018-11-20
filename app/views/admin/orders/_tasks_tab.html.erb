@@ -1,0 +1,29 @@
+<h3>Tasks</h3>
+
+
+<%= form_tag admin_orders_path, method: :get do %>
+  <%= label_tag :service %>
+  <%= select_tag "service", options_from_collection_for_select(Service.all, "id", "name"), prompt: "Filter by  service" %>
+  <!-- Filter by service -->
+  <%= label_tag :status %>
+  <%= select_tag "status", options_for_select([ "Completed", "Pending" ], "Filter by status") %>
+<!-- Filter by status -->
+  <%= submit_tag "filter", class: "btn btn-large btn-primary" %>
+<% end %>
+
+<!-- Displaying order items & corresponding service items -->
+<% @order_items.each do |order_item| %>
+    <li><%= order_item.service_item.content.capitalize %> : <%= order_item.content %></li>
+    <p>Order # <%= order_item.order.id %></p>
+    <h1>
+      <%= order_item.service_item.category %>
+    </h1>
+    <p>Change item status?</p>
+    <p>Current state: <%= order_item.completed %></p>
+      <%= simple_form_for [:admin, order_item] do |f| %>
+        <%= f.input :completed, input_html: {value: !order_item.completed }, as: :hidden %>
+      <%= f.button :submit, "toggle completed state" %>
+      <p><%= order_item.completed %></p>
+    <% end %>
+  <% end %>
+
