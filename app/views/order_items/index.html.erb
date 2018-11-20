@@ -6,6 +6,7 @@
       <% end %>
       <%= form_for @order do |f| %>
       <% Service.all.each do |service| %>
+      <!-- add div -->
         <h1><%= service.name %></h1>
         <% service.service_items.each do |item| %>
         <div class="form-group">
@@ -15,6 +16,7 @@
           <input type="<%= item.data_type %>" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]" id="<%= 'order_deceased_address' if item.content.include?("address") %>" class=“order_item_form” >
         </div>
         <% end %>
+        <!-- close div -->
       <% end %>
       <%= f.button :submit, class:"btn btn-info btn-sm" %>
       <% end %>
