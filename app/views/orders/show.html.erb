@@ -1,5 +1,11 @@
 
 
+  <% @order.order_items.each do |order_item| %>
+    <% if order_item.completed == false && order_item.service_item.category == "task" %>
+      <li><%= order_item.service_item.content %> : <%= order_item.content %></li>
+    <% end %>
+  <% end %>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 main-card">

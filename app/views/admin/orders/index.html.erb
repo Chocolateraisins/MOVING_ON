@@ -1,80 +1,25 @@
-<div class="container" style="margin-top:70px">
+<h1 style="text-align:center">Admin dashboard</h1>
+
+<div class="container" style="margin-top:20px">
+
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Orders</a>
+      <a class="nav-link <%= 'active' if @active == 'orders-tab' %>" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="true">Orders</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Users</a>
+      <a class="nav-link <%= 'active' if @active == 'users-tab' %>" id="users-tab" data-toggle="tab" href="#users" role="tab" aria-controls="users" aria-selected="false">Users</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Pending tasks</a>
+    <li class="nav-item <%= 'active' if @active == 'tasks-tab' %>">
+      <a class="nav-link" id="tasks-tab" data-toggle="tab" href="#tasks" role="tab" aria-controls="tasks" aria-selected="false">Tasks</a>
     </li>
   </ul>
 
+
+<!-- Rendering content of the admin dashboard views -->
   <div class="tab-content" id="myTabContent">
-
-    <div class="tab-pane fade show in active" id="home" role="tabpanel" aria-labelledby="home-tab"> <!-- Orders tab -->
-        <h3>Orders</h3>
-        <div
-        id="map"
-        style="width: 100%;
-        height: 500px;"
-        data-markers="<%= @markers.to_json %>"
-        ></div>
-        <ul>
-          <% @orders.each do |order| %>
-          <h3>order #<%= order.id %></h3>
-          <li>Customer :<%= order.user.first_name %> <%= order.user.last_name %></li>
-          <li>Invoice: <%= order.invoice_amount %></li>
-          <li>Address: <%= order.deceased_address %></li>
-          <button type="button" class="btn btn-danger"><%= button_to "Cancel order", admin_order_path(order), method: :delete, data: {confirm: "Are you sure you want to cancel this order?"} %></button>
-          <% end %>
-        </ul>
-    </div>
-
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> <!-- Users tab -->
-        <h3>Users</h3>
-          <% User.all.each do |user| %>
-          <h4>Customer :<%= user.first_name %> <%= user.last_name %></h4>
-          <p>Orders: <%= user.orders.count %></p>
-          <% end %>
-    </div>
-
-    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"> <!-- Pending tab -->
-        <h3>Pending tasks</h3>
-        <ul>
-          <% @orders.each do |order| %>
-            <% if order.status == "pending" %>
-            <h4>order #<%= order.id %></h4>
-              <% order.order_items.each do |order_item| %>
-                <% if order_item.completed == false && order_item.service_item.category == "task" %>
-                  <li><%= order_item.service_item.content %> : <%= order_item.content %></li>
-                  <p>Mark as completed?</p>
-
-                  <p><%= order_item.completed %></p>
-
-                  <%= simple_form_for [order, order_item], url: admin_order_order_item_path(order, order_item), method: :patch do |f| %>
-                    <%= f.input :completed, value: !order_item.completed, as: :hidden %>
-                    <% if order_item.completed %>
-                      <%= f.button :submit, "mark as uncomplete" %>
-                    <% else %>
-                      <%= f.button :submit, "mark as complete" %>
-                    <% end %>
-                  <% end %>
-
-                  <%#= render "admin/orders/btn_status", order_item: order_item, order: order %>
-                <!-- <label class="switch" >
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label> -->
-                <br>
-                <% end %>
-             <% end %>
-            <% end %>
-          <% end %>
-        </ul>
-    </div>
-
+     <div class="tab-pane fade <%= 'show in active' if @active == 'orders-tab' %>" id="home" role="tabpanel" aria-labelledby="orders-tab"><%= render "admin/orders/orders_tab" %></div>
+      <div class="tab-pane fade <%= 'show in active' if @active == 'users-tab' %>" id="users" role="tabpanel" aria-labelledby="users-tab"><%= render "admin/orders/users_tab" %></div>
+      <div class="tab-pane fade <%= 'show in active' if @active == 'tasks-tab' %>" id="tasks" role="tabpanel" aria-labelledby="tasks-tab"><%= render "admin/orders/tasks_tab" %></div>
   </div>
 
 </div>

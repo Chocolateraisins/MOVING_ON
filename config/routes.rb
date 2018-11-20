@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :orders, only: [:index, :destroy] do
-      resources :order_items, only: [:update]
     end
+    resources :order_items, only: [:update]
   end
 
   resources :orders do
