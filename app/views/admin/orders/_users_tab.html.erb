@@ -41,13 +41,10 @@
 <div class="container">
   <div class="row">
     <% User.all.each do |user| %>
-      <div class="col-xs-6 col-sm-2">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://res.cloudinary.com/dxzgio39l/image/upload/v1542622875/skull.jpg');">
-          <h5>Customer :<%= user.first_name %> <%= user.last_name %></h5>
-          <p>Orders: <%= user.orders.count %></p>
-          <% unless user.orders.count == 0 %>
-            <%= user.orders.count %>
-          <% end %>
+      <div class="col-xs-6 col-sm-3">
+        <div class="card dashboard-users-card">
+          <h5><img style="height:15px" src="../assets/single_user_black_icon.png" alt="user"> Customer: <%= user.first_name %> <%= user.last_name %></h5>
+          <p><img style="height:15px" src="../assets/order_black_icon.png" alt="Service"> Orders: <%= user.orders.count %></p>
         </div>
       </div>
     <% end %>
