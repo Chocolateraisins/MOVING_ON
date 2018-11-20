@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    resources :services do
+      resources :service_items
+    end
   end
 
   devise_for :users
@@ -17,8 +20,5 @@ Rails.application.routes.draw do
     resources :order_items
   end
 
-  resources :services do
-    resources :service_items
-  end
 
 end
