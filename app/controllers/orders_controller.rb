@@ -41,6 +41,7 @@ class OrdersController < ApplicationController
       order_item.order = @order
       order_item.save
     end
+    @order.set_total_price
     redirect_to orders_path
   end
 
