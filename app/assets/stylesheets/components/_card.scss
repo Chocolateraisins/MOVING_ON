@@ -71,7 +71,38 @@
   border-radius: 3px;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
   // border: 1px solid lightgrey;
-
 }
 
+// admin dashboard components
 
+.dashboard-orders-card {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 5px;
+  margin: 0px 50px;
+  height: 350px;
+}
+
+.dashboard-metric-card {
+  text-align: center;
+  color: white;
+}
+
+.dashboard-users-card {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 5px;
+  margin-top: 20px;
+  height: 90px;
+}
+
+.dashboard-tasks-card {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 5px;
+  margin-top: 20px;
+  height: 300px;
+}

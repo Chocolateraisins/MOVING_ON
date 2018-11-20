@@ -1,0 +1,33 @@
+#map-card {
+  position: relative;
+  background-color: white;
+  height: 600px;
+  width: 100%;
+  margin-right:0;
+  margin-left: 0;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding-top: 10px;
+}
+
+#map-title {
+  width:100vh;
+  height: 20px;
+  align-text: center;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  padding: 15px;
+  color: black;
+}
+
+#map {
+  position:absolute;
+  width: 100% !important;
+  height: 500px;
+  bottom:0;
+  left:0;
+  right:0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
