@@ -24,7 +24,7 @@
           <% service.service_items.each do |item| %>
             <div class="form-group">
               <%= item.content %>
-              <% order_item = @order.order_items.find_by(service_item: item) || OrderItem.create(service_item: item, order: @order) %> | <%= order_item.content %>
+              <%order_item = @order.order_items.find_by(service_item: item)%> | <%= order_item.content %>
               <!-- checking if the service item takes a number as the corresponding order item -->
               <% if item.data_type == "number" %>
                 <% @service_price = order_item.content.to_i * item.unit_price.to_i %>
