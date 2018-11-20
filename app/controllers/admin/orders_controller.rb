@@ -18,13 +18,12 @@ class Admin::OrdersController < ApplicationController
     @active = 'orders-tab'
 
     if params[:service] && params[:status]
-      service = params[:service]
+      service_id = params[:service].to_i
       completed = params[:status] == "Completed"
       @active = 'tasks-tab'
-      ### maybe change ServiceItem to OrderItem
-      @order_items = ServiceItem.joins(:service).joins(:order_items).where('services.name = ? AND service_items.category = ? AND order_items.completed = ?', service, "task", completed)
+      @order_items = OrderItem.joins(:service_item).where("service_items.service_id = ? AND service_items.category = 'task' AND order_items.completed = ?", service_id, completed)
     else
-      @order_items = OrderItem.all
+      @order_items = OrderItem.joins(:service_item).where("service_items.category = 'task'")
     end
 
   end

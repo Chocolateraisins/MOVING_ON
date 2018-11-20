@@ -1,0 +1,46 @@
+<h3>Tasks</h3>
+
+<%= form_tag admin_orders_path, method: :get do %>
+  <%= label_tag :service %>
+  <%= select_tag "service", options_for_select([ "House Clearance", "Mail Forwarding", "Contract Cancellation" ], "Filter by  service") %>
+  <!-- ### Moving forward will need to replace array of services for instance of model -->
+  <%= label_tag :status %>
+  <%= select_tag "status", options_for_select([ "Completed", "Pending" ], "Filter by status") %>
+
+  <%= submit_tag "filter", class: "btn btn-large btn-primary" %>
+<% end %>
+
+<div class="container">
+  <div class="row">
+
+  <% @orders.each do |order| %>
+    <h4>order #<%= order.id %></h4>
+      <% order.order_items.each do |order_item| %>
+        <!-- <div class="col-xs-6 col-sm-2">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://res.cloudinary.com/dxzgio39l/image/upload/v1542622875/skull.jpg');"> -->
+            <% if order_item.service_item.category == "task" %>
+              <li><%= order_item.service_item.content %> : <%= order_item.content %></li>
+
+                  <p>Change item status?</p>
+                  <%= simple_form_for [order, order_item], url: admin_order_order_item_path(order, order_item), method: :patch do |f| %>
+                    <%= f.input :completed, value: false, as: :hidden %>
+                      <% if order_item.completed == false %>
+                      <p><%= order_item.completed %></p>
+                        <%= f.button :submit, "mark as complete" %>
+                      <% else %>
+                        <%= f.button :submit, "mark as incomplete" %>
+                        <p><%= order_item.completed %></p>
+                      <% end %>
+                    <% end %>
+            <% end %>
+         <!--  </div>
+        </div> -->
+      <% end %>
+  <% end %>
+
+  </div>
+</div>
+
+
+
+
