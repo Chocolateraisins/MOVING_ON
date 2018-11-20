@@ -10,8 +10,8 @@
       <p>Data Type: <%= @service_item.data_type %></p>
       <p>Category: <%= @service_item.category %></p>
 
-      <%= link_to 'Update Service Item', edit_service_service_item_path(@service, @service_item), class:"btn btn-info" %>
-      <%= link_to 'Back to Services', services_path, class:"btn btn-primary btn-lg"%>
+      <%= link_to 'Update Service Item', edit_admin_service_service_item_path(@service, @service_item), class:"btn btn-info" %>
+      <%= link_to 'Back to Services', admin_services_path, class:"btn btn-primary btn-lg"%>
 
     </div>
   </div>

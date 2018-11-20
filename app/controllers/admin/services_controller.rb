@@ -1,4 +1,4 @@
-class ServicesController < ApplicationController
+class Admin::ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -10,8 +10,8 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
-        format.json { render :show, status: :created, location: @service }
+        format.html { redirect_to admin_service_path(@service), notice: 'Service was successfully created.' }
+        format.json { render :show, status: :created, location: admin_service_path(@service) }
       else
         format.html { render :new }
         format.json { render json: @service.errors, status: :unprocessable_entity }
@@ -32,8 +32,8 @@ class ServicesController < ApplicationController
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
-        format.json { render :show, status: :created, location: @service }
+        format.html { redirect_to admin_service_path(@service), notice: 'Service was successfully updated.' }
+        format.json { render :show, status: :created, location: admin_service_path(@service) }
       else
         format.html { render :new }
         format.json { render json: @service.errors, status: :unprocessable_entity }
@@ -62,10 +62,9 @@ class ServicesController < ApplicationController
 
 def destroy
   @service.destroy
-    # redirect_to services_path
 
     respond_to do |format|
-      format.html { redirect_to services_path, notice: 'Service was successfully deleted.' }
+      format.html { redirect_to admin_services_path, notice: 'Service was successfully deleted.' }
       format.json { head :no_content }
     end
   end

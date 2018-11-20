@@ -1,4 +1,4 @@
-class ServiceItemsController < ApplicationController
+class Admin::ServiceItemsController < ApplicationController
   before_action :set_service_item, only: [:show, :edit, :update, :destroy]
   def new
     @service = Service.find(params[:service_id])
@@ -11,7 +11,7 @@ class ServiceItemsController < ApplicationController
     @service_item.service = @service
 
       if @service_item.save
-        redirect_to service_service_item_path(@service, @service_item)
+        redirect_to admin_service_service_item_path(@service, @service_item)
 
       else
         render :new
@@ -28,7 +28,7 @@ class ServiceItemsController < ApplicationController
 
   def update
      if @service_item.update(service_items_params)
-        redirect_to service_service_item_path(@service_item)
+        redirect_to admin_service_service_item_path(@service_item)
 
       else
         render :new
@@ -39,7 +39,7 @@ class ServiceItemsController < ApplicationController
     @service_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to services_path, notice: "Service Item #{@service_item.content.upcase} was successfully deleted." }
+      format.html { redirect_to admin_services_path, notice: "Service Item #{@service_item.content.upcase} was successfully deleted." }
       format.json { head :no_content }
     end
   end
