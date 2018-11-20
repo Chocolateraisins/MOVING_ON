@@ -12,7 +12,7 @@
           <%= item.content %>
           <!-- Checking if there is an item -->
           <% order_item = @order.order_items.find_by(service_item: item) || OrderItem.create(service_item: item, order: @order) %>
-          <input type="<%= item.data_type %>" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]" id="<%= 'order_deceased_address' if item.content.include?("address") %>" class=“order_item_form” >
+          <input type="<%= item.data_type %>" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]" id="<%= 'order_deceased_address' if item.content.include?("address") %>" class= "order_item_form <%= 'datepicker' if item.data_type.include?("date") %> <%= 'datepicker-time' if item.data_type.include?("datetime-local") %>">
         </div>
         <% end %>
       <% end %>
@@ -21,7 +21,5 @@
     </div>
   </div>
 </div>
-
-
 
 

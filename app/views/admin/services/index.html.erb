@@ -1,9 +1,66 @@
 <div class="container">
   <h1>Services index</h1>
   <div class="row">
-    <% @services.each do |service| %>
     <div class="col-xs-12 col-sm-8 col-sm-offset-2">
       <div class="main-card-services">
+
+        <div>
+        <ol>
+        <% @services.each do |service| %>
+          <div class="message">
+            <li>
+
+
+              <h3>Service: <%= service.name %></h3>
+              <div>
+                <%= link_to 'Show', admin_service_path(service), class:"btn" %>
+                <%= link_to 'Edit', edit_admin_service_path(service), class:"btn" %>
+                <%= link_to 'Delete service', admin_service_path(service), method: :delete, data: { confirm: "Are you sure you want to delete the service #{service.name.upcase}?" }, class:"btn" %>
+              </div>
+              <div><p><%= service.description %></p></div>
+
+
+                <div>
+                  <% service.service_items.each do |service_item| %>
+                    <div class="service_item">
+                      <div class="flex-item-content">
+                        Content:
+                        <%= service_item.content%>
+                        </div>
+                        <div class="flex-item-price">
+                        Unit price:
+                        <%= service_item.unit_price%>
+                        </div>
+                        <div class="flex-item-type">
+                        Date type:
+                        <%= service_item.data_type%>
+                        </div>
+
+                    </div>
+                  <% end %>
+                </div>
+
+
+            </li>
+          </div>
+        <% end %>
+        </ol>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container">
+  <h1>Services index</h1>
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+      <div class="main-card-services">
+    <% @services.each do |service| %>
         <ol>
           <li>
             <h3>Service: <%= service.name %>
@@ -11,7 +68,7 @@
               <%= link_to 'Edit', edit_admin_service_path(service), class:"btn btn-info" %>
               <%= link_to 'Delete service', admin_service_path(service), method: :delete, data: { confirm: "Are you sure you want to delete the service #{service.name.upcase}?" }, class:"btn btn-danger" %></h3>
               <p><%= service.description %></p>
-              <br>
+
               <p>
                 <% service.service_items.each do |service_item| %>
                 Content:
@@ -26,13 +83,65 @@
               </li>
               <% end %>
               <%= link_to 'Add Service Item', new_admin_service_service_item_path(service), class:"btn btn-primary" %>
-          </div>
-        </div>
               <% end %>
             </ol>
           <%= link_to 'Add Service', new_admin_service_path, class:"btn btn-primary" %>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="message">
+  <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+  <div class="message-name">
+    <h3>Gab Dehan</h3>
+    <p>10/07/17</p>
+  </div>
+  <div class="message-body">
+    <p><strong>I am not sure yet!</strong></p>
+    <p>
+      I am not sure yet! I might be in Shanghai at this moment... Can I tell you later?
+    </p>
+  </div>
+  <div class="message-status">
+    <p class="status pending">Pending</p>
+    <p class="price">€345</p>
+  </div>
+</div>
+<div class="message">
+  <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+  <div class="message-name">
+    <h3>Gab Dehan</h3>
+    <p>10/07/17</p>
+  </div>
+  <div class="message-body">
+    <p><strong>I am not sure yet!</strong></p>
+    <p>
+      I am not sure yet! I might be in Shanghai at this moment... Can I tell you later?
+    </p>
+  </div>
+  <div class="message-status">
+    <p class="status pending">Pending</p>
+    <p class="price">€345</p>
+  </div>
+</div>
+<div class="message">
+  <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+  <div class="message-name">
+    <h3>Gab Dehan</h3>
+    <p>10/07/17</p>
+  </div>
+  <div class="message-body">
+    <p><strong>I am not sure yet!</strong></p>
+    <p>
+      I am not sure yet! I might be in Shanghai at this moment... Can I tell you later?
+    </p>
+  </div>
+  <div class="message-status">
+    <p class="status pending">Pending</p>
+    <p class="price">€345</p>
+  </div>
+</div>
 
 <!-- <%#= order.user.first_name %> <%#= order.user.last_name %></li>
   <li>Invoice: <%#= order.invoice_amount %> -->

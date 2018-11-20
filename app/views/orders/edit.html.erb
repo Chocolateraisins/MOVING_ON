@@ -7,7 +7,7 @@
           <%= f.input :deceased_first_name %>
           <%= f.input :deceased_last_name%>
           <%= f.input :deceased_address%>
-          <%= f.input :date_of_death %>
+          <%= f.input :date_of_death, as: :string, input_html: {class: "datepicker"} %>
           <%= f.button :submit, "Create order" %>
         </div>
       </div>

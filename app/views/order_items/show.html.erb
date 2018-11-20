@@ -5,10 +5,6 @@
   <ul>
   <% service.service_items.each do |item| %>
     <li>
-   <!--    <%= item.content %>
-      <%= item.unit_price %> -->
-
-
       <%= @order.order_items.find_by(service_item: item).content %>
       <%= @order.order_items.find_by(service_item: item).unit_price %>
     </li>
