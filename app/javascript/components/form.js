@@ -58,6 +58,6 @@ class formWizard {
   }
 }
 
-new formWizard()s
+new formWizard()
 
 
