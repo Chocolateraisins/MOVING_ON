@@ -1,17 +1,18 @@
 <h3>Tasks</h3>
 
+
 <%= form_tag admin_orders_path, method: :get do %>
   <%= label_tag :service %>
   <%= select_tag "service", options_from_collection_for_select(Service.all, "id", "name"), prompt: "Filter by  service" %>
-  <!-- ### Moving forward will need to replace array of services for instance of model -->
+  <!-- Filter by service -->
   <%= label_tag :status %>
   <%= select_tag "status", options_for_select([ "Completed", "Pending" ], "Filter by status") %>
-
+<!-- Filter by status -->
   <%= submit_tag "filter", class: "btn btn-large btn-primary" %>
 <% end %>
 
+<!-- Displaying order items & corresponding service items -->
 <% @order_items.each do |order_item| %>
-  <%# if order_item.service_item.category == "task" %>
     <li><%= order_item.service_item.content.capitalize %> : <%= order_item.content %></li>
     <p>Order # <%= order_item.order.id %></p>
     <h1>
@@ -25,5 +26,4 @@
       <p><%= order_item.completed %></p>
     <% end %>
   <% end %>
-<%# end %>
 

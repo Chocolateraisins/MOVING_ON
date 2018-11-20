@@ -15,6 +15,7 @@ class Admin::OrdersController < ApplicationController
       }
     end
 
+    # Filter functionality for admin dashboard
     @active = 'orders-tab'
 
     if params[:service] && params[:status]
