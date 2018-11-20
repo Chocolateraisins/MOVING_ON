@@ -1,10 +1,35 @@
-<h1>Orders index</h1>
+<div class="container">
+      <% @orders.each do |order| %>
 
-<ul>
-  <% @orders.each do |order| %>
-  <h3>order #<%= order.id %></h3>
-  <li>Customer :<%= order.user.first_name %> <%= order.user.last_name %></li>
-  <li>Invoice: <%= order.invoice_amount %></li>
-  <% end %>
-</ul>
+        <div class="row">
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1 main-card">
+            <h1>Services Order Overview</h1>
+            <%= link_to "View Order Details", order_path(order),class:"btn btn-primary btn-sm" %>
+
+            <h3>Order Details <!-- #<%= order.id %> --></h3>
+            <p>Order Date: <%= order.created_at %></p>
+            <p>Customer: <%= order.user.first_name %> <%= order.user.last_name %></p>
+            <p>Status: <%= order.status %></p>
+
+            <p>Deceased identity: <%= order.deceased_first_name %> <%= order.deceased_last_name %></p>
+            <p>Deceased address: <%= order.deceased_address %></p>
+
+            <p>Invoice: <%= order.invoice_amount %></p>
+
+            <h1>Services we will help you with</h1>
+
+            <%= form_for order do |f| %>
+            <% Service.all.each do |service| %>
+            <h3><%= service.name %></h3>
+
+            <% end %>
+            <% end %>
+            <%= link_to "Edit this order", order_order_items_path(order),class:"btn btn-info btn-sm" %>
+            <%= link_to "Delete this order", order_path(order), method: :delete, class:"btn btn-danger btn-sm" %>
+
+          </div>
+        </div>
+      <% end %>
+
+</div>
 

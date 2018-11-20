@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 form">
+
+      <h2>Service: <%= @service.name %></h2>
+      <p> <%= @service.description %></p>
+
+      <h3>Service Item: <%= @service_item.content %></h3>
+      <p>Additional Information: <%= @service_item.additional_information %></p>
+      <p>Data Type: <%= @service_item.data_type %></p>
+      <p>Category: <%= @service_item.category %></p>
+
+      <%= link_to 'Update Service Item', edit_service_service_item_path(@service, @service_item), class:"btn btn-info" %>
+      <%= link_to 'Back to Services', services_path, class:"btn btn-primary btn-lg"%>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- create_table "service_items", force: :cascade do |t|
+    t.string "content"
+    t.bigint "service_id"
+    t.integer "unit_price"
+    t.string "data_type", default: "text"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_service_items_on_service_id"
+  end -->

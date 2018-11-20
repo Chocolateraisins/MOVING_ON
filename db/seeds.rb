@@ -88,9 +88,9 @@ Service.destroy_all if Rails.env == "DEVELOPMENT"
 
 puts "Creating Services House Clearance, Mail Forwarding, Contract Cancellation"
 
-service_1 = Service.create!(name: "House Clearance")
-service_2 = Service.create!(name: "Mail Forwarding")
-service_3 = Service.create!(name: "Contract Cancellation")
+service_1 = Service.create!(name: "House Clearance", description: "This service includes cleaning, moving, clearing and taking care of belongings.")
+service_2 = Service.create!(name: "Mail Forwarding", description: "This service will make sure all mail gets forwarded to a specified address.")
+service_3 = Service.create!(name: "Contract Cancellation", description: "This service will cancel all contracts related to the deceased's home.")
 
 puts "Created #{Service.count} new services!"
 
@@ -108,7 +108,7 @@ service_item_2 = ServiceItem.create!(service: service_1, content: "total area", 
 service_item_3 = ServiceItem.create!(service: service_1, content: "property type", unit_price: 0, category: "information")
 service_item_4 = ServiceItem.create!(service: service_1, content: "moving date time", unit_price: 0, data_type: "datetime-local", category: "information")
 service_item_5 = ServiceItem.create!(service: service_1, content: "belongings action", unit_price: 0, category: "task")
-service_item_6 = ServiceItem.create!(service: service_1, content: "cleaning", unit_price: 5, category: "task")
+
 
 # ServiceItems for Service 2
 service_item_7 = ServiceItem.create!(service: service_2, content: "mail forwarding", unit_price: 15, category: "task")
@@ -139,7 +139,6 @@ order_item_2 = OrderItem.create!(order: order_1, service_item: service_item_2, c
 order_item_3 = OrderItem.create!(order: order_1, service_item: service_item_3, content: property_types.sample, completed: false)
 order_item_4 = OrderItem.create!(order: order_1, service_item: service_item_4, content: Faker::Date.forward(30), completed: false)
 order_item_5 = OrderItem.create!(order: order_1, service_item: service_item_5, content: belongings_actions.sample, completed: false)
-order_item_6 = OrderItem.create!(order: order_1, service_item: service_item_6, content: "yes", completed: false)
 
 # OrderItem for Service 2, Order 1
 order_item_7 = OrderItem.create!(order: order_1, service_item: service_item_7, content: "yes", completed: false)
@@ -160,7 +159,6 @@ order_item_2 = OrderItem.create!(order: order_2, service_item: service_item_2, c
 order_item_3 = OrderItem.create!(order: order_2, service_item: service_item_3, content: property_types.sample, completed: false)
 order_item_4 = OrderItem.create!(order: order_2, service_item: service_item_4, content: Faker::Date.forward(30), completed: false)
 order_item_5 = OrderItem.create!(order: order_2, service_item: service_item_5, content: belongings_actions.sample, completed: false)
-order_item_6 = OrderItem.create!(order: order_2, service_item: service_item_6, content: "yes", completed: false)
 
 # OrderItem for Service 2, Order 2
 order_item_7 = OrderItem.create!(order: order_2, service_item: service_item_7, content: "yes", completed: false)
