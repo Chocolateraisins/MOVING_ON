@@ -3,18 +3,31 @@
   padding-top: 70px;
 }
 
-.services-title {
-  font-size: 22px;
-  font-weight: bold;
-  // margin: 20px 0px;
-  margin-bottom: 30px;
+
+.service-title-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  .new-service-form-btn {  // background-color: pink;
+
+    font-size: 18px;
+    font-weight: bold;
+  }
 }
+  .services-title {
+    font-size: 22px;
+    font-weight: bold;
+    // margin: 20px 0px;
+    margin-bottom: 30px;
+  }
+
 
 .service-name-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   .service-name {  // background-color: pink;
 
     font-size: 18px;
@@ -43,22 +56,23 @@
 }
 
 .admin-btns {
+  margin-left: 20px;
   i {
     color: rgb(80,80,80);
-  }
-  &:hover {
-    i {
+    &:hover {
+     i {
       cursor: pointer;
       color: brown;
       }
     }
+  }
 }
 
 
 .new-service-form-btn {
   display: flex;
   align-items: center;
-  font-size: 16px;
+  font-size: 14px;
   margin: 20px 0px;
   .a-text {
     margin-left: 10px;
