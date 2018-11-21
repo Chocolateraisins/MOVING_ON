@@ -1,34 +1,32 @@
-<div class="container">
+<div class="admin-container">
 
-
-  <div id="map-card">
-  <h2 style="text-align:center;">Locating your orders</h2>
-    <div id="map" data-markers="<%= @markers.to_json %>"></div>
-  </div>
-
-
-  <div class="row">
+<!-- Cards -->
+  <div class="cards-container">
     <% @orders.each do |order| %>
-    <div class="col-xs-12 col-sm-6">
-      <div class="card dashboard-orders-card">
-        <h3 class = "card-title">Order #<%= order.id %></h3>
-        <img style="height:25px" src="../assets/order_black_icon.png" alt="Service">
-        <br>
-        <br>
-        <p class = "card-text"><img style="height:15px" src="../assets/single_user_black_icon.png" alt="user"> Customer :<%= order.user.first_name %> <%= order.user.last_name %></p>
-        <p class="card-text"><img style="height:15px" src="../assets/invoice_black_icon.svg" alt="invoice"> Invoice amount: <%= order.invoice_amount %>$</p>
-        <p class="card-text"><img style="height:15px" src="../assets/map_pin_black_icon.png" alt="invoice">Address: <%= order.deceased_address %></p>
-        <p class ="card-text"><%= link_to "See details", order_path(order), method: :get %></p>
-        <%= button_to "Cancel order", admin_order_path(order), method: :delete, :class => "btn btn-danger", data: {confirm: "Are you sure?"} %>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="card dashboard-orders-card">
+          <h3 class = "card-title">Order #<%= order.id %></h3>
+          <img style="height:25px" src="../assets/order_black_icon.png" alt="Service">
+          <br>
+          <br>
+          <p class = "card-text"><img style="height:15px" src="../assets/single_user_black_icon.png" alt="user"> Customer :<%= order.user.first_name %> <%= order.user.last_name %></p>
+          <p class="card-text"><img style="height:15px" src="../assets/invoice_black_icon.svg" alt="invoice"> Invoice amount: <%= order.invoice_amount %>$</p>
+          <p class="card-text"><img style="height:15px" src="../assets/map_pin_black_icon.png" alt="invoice">Address: <%= order.deceased_address %></p>
+          <p class ="card-text"><%= link_to "See details", order_path(order), method: :get %></p>
+          <%= button_to "Cancel order", admin_order_path(order), method: :delete, :class => "btn btn-danger", data: {confirm: "Are you sure?"} %>
+        </div>
       </div>
-    </div>
     <% end %>
   </div>
 
 
+<!-- Map -->
+  <div class = "map col-xs-12 col-sm-6 col-md-6">
+<!--   <h2 style="text-align:center;">Locating your orders</h2> -->
+    <div id="map" data-markers="<%= @markers.to_json %>"></div>
+  </div>
 
 </div>
-
 
 
 
