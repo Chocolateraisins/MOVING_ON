@@ -76,12 +76,15 @@
 // admin dashboard components
 
 .dashboard-orders-card {
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   background-color: white;
   color: black;
   text-align: center;
-  padding: 5px;
+  padding: 20px;
   margin: 0px 50px;
-  height: 350px;
+  height: 330px;
+  width: 300px;
+  margin: 30px 20px;
 }
 
 .dashboard-metric-card {
@@ -90,6 +93,7 @@
 }
 
 .dashboard-users-card {
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   background-color: white;
   color: black;
   text-align: center;
@@ -99,10 +103,23 @@
 }
 
 .dashboard-tasks-card {
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   background-color: white;
   color: black;
   text-align: center;
-  padding: 5px;
+  padding: 10px;
   margin-top: 20px;
-  height: 300px;
+  height: 260px;
+}
+
+.dashboard-big-tasks-card {
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  padding-top: 30px;
+  margin-top: 20px;
+  height: 540px;
+  width: 300px;
 }

@@ -2,24 +2,25 @@
 
 <div class="container" style="margin-top:20px">
 
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link <%= 'active' if @active == 'orders-tab' %>" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="true">Orders</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link <%= 'active' if @active == 'users-tab' %>" id="users-tab" data-toggle="tab" href="#users" role="tab" aria-controls="users" aria-selected="false">Users</a>
-    </li>
-    <li class="nav-item <%= 'active' if @active == 'tasks-tab' %>">
-      <a class="nav-link" id="tasks-tab" data-toggle="tab" href="#tasks" role="tab" aria-controls="tasks" aria-selected="false">Tasks</a>
-    </li>
+  <!-- Nav tabs -->
+ <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#Orders" aria-controls="Orders" role="tab" data-toggle="tab">Orders</a></li>
+    <li role="presentation"><a href="#Users" aria-controls="Users" role="tab" data-toggle="tab">Users</a></li>
+    <li role="presentation"><a href="#Tasks" aria-controls="Tasks" role="tab" data-toggle="tab">Tasks</a></li>
   </ul>
 
+<!-- Tab panes -->
 
-<!-- Rendering content of the admin dashboard views -->
-  <div class="tab-content" id="myTabContent">
-     <div class="tab-pane fade <%= 'show in active' if @active == 'orders-tab' %>" id="home" role="tabpanel" aria-labelledby="orders-tab"><%= render "admin/orders/orders_tab" %></div>
-      <div class="tab-pane fade <%= 'show in active' if @active == 'users-tab' %>" id="users" role="tabpanel" aria-labelledby="users-tab"><%= render "admin/orders/users_tab" %></div>
-      <div class="tab-pane fade <%= 'show in active' if @active == 'tasks-tab' %>" id="tasks" role="tabpanel" aria-labelledby="tasks-tab"><%= render "admin/orders/tasks_tab" %></div>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="Orders">
+      <%= render "admin/orders/orders_tab" %>
+      </div>
+    <div role="tabpanel" class="tab-pane" id="Users">
+      <%= render "admin/orders/users_tab" %>
+      </div>
+    <div role="tabpanel" class="tab-pane" id="Tasks">
+      <%= render "admin/orders/tasks_tab" %>
+    </div>
   </div>
 
 </div>
