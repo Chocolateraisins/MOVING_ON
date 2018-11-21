@@ -9,7 +9,7 @@
 
         <div class="service-name-wrapper">
           <div class="service-name">
-            Service: <%= service.name %>
+            <%= service.name %>
           </div>
           <%= render "admin_btns", service_mango: service %>
         </div>
@@ -21,21 +21,21 @@
         </div>
         <div class="service-items">
 
-          <div class="service-item">
-            <div class="service-item-content service-item-info title-bold">
-              Content
-            </div>
-            <div class="service-item-type service-item-info title-bold">
-              Type
-            </div>
-            <div class="service-item-price service-item-info title-bold">
-              Price
+          <%= render "service_items_headers" %>
+
+          <% service.service_items.each do |service_item| %>
+            <%= render "service_item", service_mango: service, service_item_mango: service_item %>
+            <%#= render "service_item_btns", service_item_mango: service_item %>
+          <% end %>
+
+          <div id="new-service-item-form-btn" class="new-service-item-form-btn">
+            <i class="fas fa-plus"></i>
+            <div class="a-text">
+              New service item
             </div>
           </div>
 
-          <% service.service_items.each do |service_item| %>
-            <%= render "service_item", service_item_mango: service_item %>
-          <% end %>
+          <%= render "new_service_item_form", service: service, service_item: @service_item %>
 
         </div>
       </div>
