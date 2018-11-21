@@ -15,15 +15,15 @@
     <%= service_item_mango.unit_price%>
   </div>
   <div class="service-item-action service-item-info">
-    <%= link_to admin_service_service_item_path(service_mango, service_item_mango), class:"btn" do %>
+    <%= link_to admin_service_service_item_path(service_mango, service_item_mango), class: "service-item-icon" do %>
     <i class="far fa-eye"></i>
     <% end %>
 
-    <%= link_to edit_admin_service_service_item_path(service_mango, service_item_mango), class:"btn" do %>
+    <%= link_to edit_admin_service_service_item_path(service_mango, service_item_mango), class: "service-item-icon" do %>
       <i class="fas fa-edit"></i>
       <% end %>
 
-    <%= link_to admin_service_service_item_path(service_mango, service_item_mango), method: :delete, data: { confirm: "Are you sure you want to delete the Service Item #{service_item_mango.content.upcase}?" }, class:"btn" do %>
+    <%= link_to admin_service_service_item_path(service_mango, service_item_mango), method: :delete, data: { confirm: "Are you sure you want to delete the Service Item #{service_item_mango.content.upcase}?" }, class: "service-item-icon" do %>
       <i class="far fa-trash-alt"></i>
     <% end %>
   </div>

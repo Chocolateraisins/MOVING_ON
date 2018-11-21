@@ -23,6 +23,7 @@ class Admin::ServicesController < ApplicationController
   end
 
   def index
+    @service_item = ServiceItem.new
     @services = Service.all
   end
 

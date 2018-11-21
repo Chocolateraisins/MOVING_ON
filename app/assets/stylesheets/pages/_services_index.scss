@@ -28,6 +28,19 @@
   margin-bottom: 40px;
 }
 
+.new-service-item-form-btn {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin: 20px 0px;
+  .a-text {
+    margin-left: 10px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .service-items {
   .service-item {
     display: flex;
@@ -38,20 +51,21 @@
     margin: 4px 0 4px 0;
     padding: 2px 5px;
     background-color: white;
+    font-size: 14px;
     .service-item-content {
-      width: 33.333%;
+      width: 12%;
       // background-color: blue;
     }
     .service-item-additional-information {
-      width: 33.333%;
+      width: 16%;
       // background-color: blue;
     }
     .service-item-category {
-      width: 33.333%;
+      width: 12%;
       // background-color: blue;
     }
     .service-item-price {
-      width: 33.333%;
+      width: 10%;
       text-align: center;
       // background-color:  brown;
 
@@ -59,17 +73,24 @@
     .service-item-type {
       // background-color: red;
 
-      width: 33.333%;
+      width: 10%;
     }
     .service-item-action {
       // background-color: red;
 
-      width: 33.333%;
+      width: 20%;
     }
     .service-item-info {
     }
     .title-bold {
       font-weight: bold;
+    }
+    .service-item-icon {
+      i {
+        font-size: 13px;
+        color: rgb(80,80,80);
+      }
+
     }
   }
 }

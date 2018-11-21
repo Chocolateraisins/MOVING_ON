@@ -51,7 +51,7 @@ class Admin::ServiceItemsController < ApplicationController
   end
 
   def service_items_params
-    params.require(:service_item).permit(:content, :unit_price, :data_type, :category)
+    params.require(:service_item).permit(:content, :unit_price, :data_type, :category, :additional_information, :type)
   end
 end
 
