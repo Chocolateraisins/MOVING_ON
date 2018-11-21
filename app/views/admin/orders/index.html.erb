@@ -3,7 +3,9 @@
   <!-- Nav tabs -->
  <ul class="nav nav-tabs" role="tablist">
 
-    <li role="presentation" class="<%= 'active' if @active == 'orders' %>"><a href="#orders" aria-controls="Orders" role="tab" data-toggle="tab">Orders</a></li>
+    <li role="presentation" class="<%= 'active' if @active == 'services' %>"><a href="#services" aria-controls="services" role="tab" data-toggle="tab">Manage services</a></li>
+
+    <li role="presentation" class="<%= 'active' if @active == 'orders' %>"><a href="#orders" aria-controls="orders" role="tab" data-toggle="tab">Orders</a></li>
 
     <li role="presentation" class="<%= 'active' if @active == 'users' %>"><a href="#users" aria-controls="users" role="tab" data-toggle="tab">Users</a></li>
 
@@ -13,6 +15,9 @@
 <!-- Tab panes -->
 
   <div class="tab-content">
+    <div role="tabpanel" class="tab-pane <%= 'active' if @active == 'services' %>" id="services">
+      <%= link_to admin_services_path %>
+      </div>
     <div role="tabpanel" class="tab-pane <%= 'active' if @active == 'orders' %>" id="orders">
       <%= render "admin/orders/orders_tab" %>
       </div>

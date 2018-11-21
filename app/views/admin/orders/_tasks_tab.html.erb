@@ -9,7 +9,7 @@
 
   <div class="col-xs-12 col-sm-6 col-md-6">
     <div class="card dashboard-big-tasks-card">
-      <h3>Filters</h3>
+      <h4><strong>Filters</strong></h4>
       <br>
         <%= form_tag admin_orders_path, method: :get do %>
         <%= label_tag :service %>
@@ -40,30 +40,33 @@
             <% end %>
         <% end %>
       <% end %>
-      <h4><img style="height:25px" src="../assets/task_black_icon.png" alt="task"> Pending Tasks</h4>
-      <h4><%= tasks.count %></h4>
+
+      <h4><strong><%= tasks.count %></strong></h4>
+      <p> Pending tasks</p>
       <br>
-      <h4><img style="height:25px" src="../assets/task_black_icon.png" alt="task">  House clearance</h4>
-      <h4><%= clearance_tasks.count %></h4>
+
+      <h4><strong><%= clearance_tasks.count %></strong></h4>
+      <p> House clearance</p>
       <br>
-      <h4><img style="height:25px" src="../assets/task_black_icon.png" alt="task">  Mail Forwarding</h4>
-      <h4><%= mail_tasks.count %></h4>
+
+      <h4><strong><%= mail_tasks.count %><strong></h4>
+      <p> Mail forwarding</p>
       <br>
-      <h4><img style="height:25px" src="../assets/task_black_icon.png" alt="task">  Contract cancellation</h4>
-      <h4><%= contract_tasks.count %></h4>
+
+      <h4><strong><%= contract_tasks.count %><strong></h4>
+      <p> Contract cancellation</p>
     </div>
+
   </div>
 
   <div class="cards-container">
     <% @order_items.each do |order_item| %>
 
-        <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="col-xs-12 col-sm-6 col-md-3">
           <div class="card cards-container">
             <div class="card dashboard-tasks-card">
-              <h4><%= order_item.service_item.service.name.capitalize %></h4>
-              <br>
+              <p class ="card-small-title"><strong><%= order_item.service_item.service.name.capitalize %></strong></p>
               <p><img style="height:15px" src="../assets/order_black_icon.png" alt="Service"> Order # <%= order_item.order.id %></p>
-              <br>
               <p><%= order_item.service_item.content.capitalize %> => <%= order_item.content %></p>
               <%= simple_form_for [:admin, order_item] do |f| %>
                 <%= f.input :completed, input_html: {value: !order_item.completed }, as: :hidden %>
@@ -71,10 +74,10 @@
                 <%= button_tag type: 'submit', class: "not-btn" do %>
                   <% if order_item.completed %>
                   <p>Completed</p>
-                    <i class="fas fa-toggle-on"></i>
+                    <i class="fas fa-toggle-on lg"></i>
                   <% else %>
                     <p>Pending</p>
-                    <i class="fas fa-toggle-off"></i>
+                    <i class="fas fa-toggle-off lg"></i>
                   <% end %>
                 <% end %>
               <% end %>
