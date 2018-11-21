@@ -1,0 +1,11 @@
+<ul class="timeline-container">
+  <div class="step-progress-bar">
+    <li class="timeline-number"> 1 </li>
+    <% step = 2 %>
+    <% Service.all.each_with_index do |service, index| %>
+      <li class="<%= 'active' if step == 2 %> serviceTitle timeline-number" id="tile-<%= step %>"> <%= step %> <%#= service.name%>
+      </li>
+      <% step += 1 %>
+    <% end %>
+  </div>
+</ul>

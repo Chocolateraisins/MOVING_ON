@@ -1,12 +1,27 @@
+
+<!-- display all the names
+      Create Order.active  name1in.inactive - name2.iactive -name3.inactive -->
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3 form">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 main-card">
+   <ul class="timeline-container">
+  <div class="step-progress-bar">
+    <li class="timeline-number active"> 1 </li>
+    <% step = 2 %>
+    <% Service.all.each_with_index do |service, index| %>
+      <li class="inactive timeline-number"> <%= step %> <%#= service.name%>
+      </li>
+      <% step += 1 %>
+    <% end %>
+  </div>
+</ul>
     <%= simple_form_for @order do |f| %>
     <%= f.input :deceased_first_name, label: 'First name of the deceased', error: 'First name is mandatory, please specify one' %>
     <%= f.input :deceased_last_name, label: 'Last name of the deceased', error: 'Last name is mandatory, please specify one' %>
     <%= f.input :deceased_address, label: 'Address of the deceased', error: 'Address is mandatory, please specify one'%>
     <%= f.input :date_of_death, as: :string, input_html: {class: "datepicker"} %>
-    <%= f.button :submit, class:"btn btn-primary btn-lg"%>
+    <button class="btn btn-primary" <%= f.button :submit %>Next</button>
+
     <% end %>
     </div>
   </div>

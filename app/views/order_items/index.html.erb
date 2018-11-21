@@ -1,33 +1,51 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 main-card">
-      <% if @order.order_items.exists?%><input type="<%= item.data_type %>" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]" id="<%= 'order_deceased_address' if item.content.include?("address") %>" class= "order_item_form <%= 'datepicker' if item.data_type.include?("date") %> <%= 'datepicker-time' if item.data_type.include?("datetime-local") %>">
-      <%= link_to "Back to Order Overview", orders_path,class:"btn btn-primary btn-sm" %>
+
+
+       <%= render 'shared/timeline' %>
+
+      <% if @order.order_items.exists?%>
+      <%#= link_to "Back to Order Overview", orders_path,class:"btn btn-primary btn-sm" %>
       <% end %>
+
+
+
       <%= form_for @order do |f| %>
-
-      <% Service.all.each_with_index do |service, index| %>
-      <div id="<%= Service.all.length %>">
-        <div class="form form-step" <%= 'hidden' if index > 0 %> id="step-<%= index + 1 %>">
-          <h1><%= service.name %></h1>
-          <p> <%= service.description %></p>
-          <% service.service_items.each do |item| %>
-          <div class="form-group">
-            <%= item.content %>
-            <!-- Checking if there is an item -->
-            <% order_item = @order.order_items.find_by(service_item: item) || OrderItem.create(service_item: item, order: @order) %>
-
+        <% Service.all.each_with_index do |service, index| %>
+          <div id="servicesDiv" data-servicelength="<%= Service.all.length %>">
+            <div class="sub-form form-step" <%= 'hidden' if index > 0 %> id="step-<%= index + 2 %>">
+              <h1><%= service.name %></h1>
+              <hr/>
+              <p> <%= service.description %></p>
+              <br>
+              <h4>Details</h4>
+              <div class="form-input-width-80">
+                <hr/>
+                <% service.service_items.each do |item| %>
+                  <div class="input-wrapper">
+                    <div class="item-content">
+                      <%= item.content %>
+                    </div>
+                    <!-- Checking if there is an item -->
+                    <% order_item = @order.order_items.find_by(service_item: item) || OrderItem.create(service_item: item, order: @order) %>
+                    <div class="item-content">
+                      <input style="width:100%" type="<%= item.data_type %>" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]" id="<%= 'order_deceased_address' if item.content.include?("address") %>" class= "<%= 'datepicker' if item.data_type.include?("date") %> <%= 'datepicker-time' if item.data_type.include?("datetime-local") %> input">
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           </div>
-          <% end %>
 
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+        <%= f.button :"Submit Order", id:"submit", class:"btn btn-info btn-sm submit" %>
+        <br>
 
-      <%= f.button :submit, class:"btn btn-info btn-sm", id:"submit" %>
       <% end %>
-    <button class="btn btn-primary" id="previous">Previous</button>
-    <button class="btn btn-primary" id="next">Next</button>
+      <br>
+      <button class="btn btn-primary btn-sm" id="previous">Previous</button>
+      <button class="btns btn-primary btn-sm" id="next">Next</button>
     </div>
   </div>
 </div>
