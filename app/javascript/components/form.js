@@ -1,4 +1,3 @@
-
 class formWizard {
   constructor() {
     this.activeStep = 1;
