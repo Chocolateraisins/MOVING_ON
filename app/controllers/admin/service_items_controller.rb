@@ -11,7 +11,7 @@ class Admin::ServiceItemsController < ApplicationController
     @service_item.service = @service
 
       if @service_item.save
-        redirect_to admin_service_service_item_path(@service, @service_item)
+        redirect_to admin_services_path#(@service, @service_item)
 
       else
         render :new

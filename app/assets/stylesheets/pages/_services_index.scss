@@ -38,6 +38,34 @@
   }
   &:hover {
     cursor: pointer;
+    color: brown;
+  }
+}
+
+.admin-btns {
+  i {
+    color: rgb(80,80,80);
+  }
+  &:hover {
+    i {
+      cursor: pointer;
+      color: brown;
+      }
+    }
+}
+
+
+.new-service-form-btn {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin: 20px 0px;
+  .a-text {
+    margin-left: 10px;
+  }
+  &:hover {
+    cursor: pointer;
+    color: brown;
   }
 }
 
@@ -88,6 +116,12 @@
       i {
         font-size: 13px;
         color: rgb(80,80,80);
+      }
+      &:hover {
+        i {
+        cursor: pointer;
+        color: brown;
+         }
       }
 
     }
