@@ -12,30 +12,62 @@
     text-align: center;
   }
 
-
-.datepicker .datepicker-time {
-  width: 30%;
-}
-
-
-.order_item_form {
-  position:absolute;
-  right:10px;
-  margin-right: 20px;
-  margin-bottom: 10px;
+.sub-form {
+  background: white;
+  padding: 10px 20px;
+  margin-top: 50px;
+  border-radius: 3px;
+  // box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
   font-weight: 300;
 }
 
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-content {
+  width: 100% !important;
+  margin-bottom: 20px;
+
+
+}
+
+  //   item-content input {
+  //   border: none;
+  //   border-bottom: solid $gray 3px;
+  //   width: 100%;
+  // }
+  .form-control {
+    border-top: none;
+    border-bottom: solid $gray 3px;
+
+
+  }
+
+// input {
+//   border: none;
+//   border-bottom: solid $gray 3px;
+
+// }
+
   .btn {
-    width: 100%;
     margin-bottom: 20px;
   }
 }
 
-// .form-step {
-//   display: none;
-// }
 
-.input {
+input {
   font-weight: 300;
+  // width: 80% !important;
 }
+
+.form-input-width-80 {
+  width: 60% !important;
+}
+
+.submit {
+  bottom: 10px;
+  right:10px
+}
+

@@ -1,0 +1,52 @@
+// .step-progress-bar {
+//   padding-top: 15px;
+//   padding-bottom: 15px;
+//   padding-left: 5px;
+//   padding-right: 5px;
+//   margin-top: 20px;
+//   margin-bottom: 20px;
+
+// }
+
+.step-progress-bar li {
+  list-style: none;
+  // padding: 5px 15px;
+}
+
+.step-progress-bar li.active {
+  color: white;
+  // display:inline;
+  background-color: $olive;
+
+}
+
+
+.step-progress-bar li {
+  color: $medium-gray;
+  // background-color: $medium-gray;
+  border: 2px solid  $medium-gray;
+
+ }
+
+.step-progress-bar  {
+  display: flex;
+  justify-content: space-around;
+}
+
+.timeline-container {
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+.timeline-number {
+  border-radius: 50%;
+  /* remove if you don't care about IE8 */
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  background: #fff;
+  // color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
