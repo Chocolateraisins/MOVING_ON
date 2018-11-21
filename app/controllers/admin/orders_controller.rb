@@ -15,13 +15,18 @@ class Admin::OrdersController < ApplicationController
       }
     end
 
-    # Filter functionality for admin dashboard
-    @active = 'orders-tab'
+    # if params[:active_tab]
+    #   @active = params[:active_tab]
+    # else
+    #   @active = 'orders'
+    # end.   BELOW IS SAME AS ABOVE
 
+    @active = params[:active_tab] ? params[:active_tab] : 'orders'
+    # Filter functionality for admin dashboard
     if params[:service] && params[:status]
       service_id = params[:service].to_i
       completed = params[:status] == "Completed"
-      @active = 'tasks-tab'
+      @active = 'tasks'
       @order_items = OrderItem.joins(:service_item).where("service_items.service_id = ? AND service_items.category = 'task' AND order_items.completed = ?", service_id, completed)
     else
       @order_items = OrderItem.joins(:service_item).where("service_items.category = 'task'")
