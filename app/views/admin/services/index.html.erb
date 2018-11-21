@@ -9,7 +9,7 @@
 
         <div class="service-name-wrapper">
           <div class="service-name">
-            Service: <%= service.name %>
+            <%= service.name %>
           </div>
           <%= render "admin_btns", service_mango: service %>
         </div>
@@ -25,16 +25,29 @@
             <div class="service-item-content service-item-info title-bold">
               Content
             </div>
+            <div class="service-item-additional-information service-item-info title-bold">
+              Additional Information
+            </div>
+            <div class="service-item-category service-item-info title-bold">
+              Category
+            </div>
             <div class="service-item-type service-item-info title-bold">
               Type
             </div>
             <div class="service-item-price service-item-info title-bold">
               Price
             </div>
+            <div class="service-item-action service-item-info title-bold">
+              Action
+            </div>
           </div>
 
           <% service.service_items.each do |service_item| %>
-            <%= render "service_item", service_item_mango: service_item %>
+            <%= render "service_item", service_mango: service, service_item_mango: service_item %>
+            <%#= render "service_item_btns", service_item_mango: service_item %>
+          <% end %>
+          <%= link_to new_admin_service_service_item_path(service), class:"btn" do %>
+          <i class="fas fa-plus"></i>
           <% end %>
 
         </div>
