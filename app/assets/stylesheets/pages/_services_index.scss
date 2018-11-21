@@ -1,8 +1,66 @@
-.service_item {
+.admin-services-page {
+  padding: 20px;
+  padding-top: 70px;
+}
+
+.services-title {
+  font-size: 22px;
+  font-weight: bold;
+  // margin: 20px 0px;
+  margin-bottom: 30px;
+}
+
+.service-name-wrapper {
   display: flex;
-  align-items: center;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(220,224,244,0.4);
-  margin: 4px 0 4px 0;
+  .service-name {  // background-color: pink;
+
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.service-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.service-items {
+  .service-item {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: 1px solid rgba(220,224,244,0.4);
+    margin: 4px 0 4px 0;
+    padding: 2px 5px;
+    background-color: white;
+    .service-item-content {
+      width: 33.333%;
+      // background-color: blue;
+    }
+    .service-item-price {
+      width: 33.333%;
+      text-align: center;
+      // background-color:  brown;
+
+    }
+    .service-item-type {
+      // background-color: red;
+
+      width: 33.333%;
+    }
+    .service-item-info {
+    }
+    .title-bold {
+      font-weight: bold;
+    }
+  }
+}
+
+.services {
+
 }
