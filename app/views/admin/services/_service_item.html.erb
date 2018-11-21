@@ -2,10 +2,10 @@
   <div class="service-item-content service-item-info">
     <%= service_item_mango.content%>
   </div>
-  <div class="service-item-type service-item-info">
+  <div class="service-item-additional-information service-item-info">
     <%= service_item_mango.additional_information%>
   </div>
-  <div class="service-item-type service-item-info">
+  <div class="service-item-category service-item-info">
     <%= service_item_mango.category%>
   </div>
   <div class="service-item-type service-item-info">
@@ -15,9 +15,9 @@
     <%= service_item_mango.unit_price%>
   </div>
   <div class="service-item-action service-item-info">
-    <%= link_to admin_service_service_item_path(service_mango, service_item_mango), class: "service-item-icon" do %>
-    <i class="far fa-eye"></i>
-    <% end %>
+    <%#= link_to admin_service_service_item_path(service_mango, service_item_mango), class: "service-item-icon" do %>
+    <!-- <i class="far fa-eye"></i> -->
+    <%# end %>
 
     <%= link_to edit_admin_service_service_item_path(service_mango, service_item_mango), class: "service-item-icon" do %>
       <i class="fas fa-edit"></i>
