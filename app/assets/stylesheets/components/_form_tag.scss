@@ -1,0 +1,65 @@
+.form_tag {
+  width: 150px;
+  float: right;
+  margin: 10px;
+  font-size: 14px;
+}
+
+.form-text {
+  font-size: 14px;
+}
+
+.form-row {
+  justify-content: center;
+}
+
+.admin-rounded-btn {
+  display: inline;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid rgb(200,200,200);
+  padding: 10px 40px;
+  border-radius: 100px;
+  font-size: 14px;
+  background-color: white;
+  color: rgb(120,120,120);
+  margin: 20px;
+  .a-text {
+    margin-left: 8px;
+  }
+  &:hover {
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+label {
+  width: 4em;
+  float: left;
+  text-align: right;
+  margin-right: 0.5em;
+  display: block;
+  font-size: 14px;
+}
+
+.service-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  p {
+    margin: 0;
+  }
+
+  label {
+    margin: 0;
+  }
+
+  select {
+    margin: 0;
+  }
+}
+
+

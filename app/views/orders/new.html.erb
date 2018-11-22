@@ -16,6 +16,7 @@
       </div>
     </ul>
     <%= simple_form_for @order do |f| %>
+
       <%= f.input :deceased_first_name, label: 'First name of the deceased', error: 'First name is mandatory, please specify one' %>
       <%= f.input :deceased_last_name, label: 'Last name of the deceased', error: 'Last name is mandatory, please specify one' %>
       <%= f.input :deceased_address, label: 'Address of the deceased', error: 'Address is mandatory, please specify one'%>
@@ -25,8 +26,7 @@
 
       <%= f.collection_check_boxes :desired_services, Service.all, :id, :name, include_hidden: false %>
       <br><br>
-      <button class="btn btn-primary" <%= f.button :submit %>Next</button>
-
+      <button class="rounded-btn new-order" <%= f.button :submit %>Next</button>
     <% end %>
     </div>
   </div>
