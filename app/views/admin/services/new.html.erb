@@ -1,12 +1,21 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 form">
-      <%= simple_form_for @service, url: admin_services_path do |f| %>
-      <%= f.input :name, label: 'Name of the service', error: 'Name is mandatory, please specify one' %>
-      <%= f.input :description, label: 'Description of the service', error: 'Description is mandatory, please specify one' %>
-      <%= f.button :submit, class:"btn btn-primary btn-lg"%>
-      <%= link_to 'Back to Services', admin_services_path, class:"btn btn-primary btn-lg"%>
-      <% end %>
+      <div class="card-body">
+        <div class="order-details-card">
+          <%= simple_form_for @service, url: admin_services_path do |f| %>
+          <%= f.input :name, label: 'Name of the service', error: 'Name is mandatory, please specify one' %>
+          <%= f.input :description, label: 'Description of the service', error: 'Description is mandatory, please specify one' %>
+
+
+          <%= f.button :submit, class: "rounded-btn-no-flex" %>
+
+          <%= link_to 'Back to Services', admin_services_path, class: "rounded-btn-no-flex" %>
+
+
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

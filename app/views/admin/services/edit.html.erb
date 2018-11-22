@@ -1,17 +1,23 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 form">
-      <h1>Edit Service</h1>
-      <%= simple_form_for @service, url: admin_service_path(@service) do |f| %>
-        <div class="form-inputs">
-          <%= f.input :name %>
-          <%= f.input :description%>
-          <%= f.button :submit, class:"btn btn-primary btn-lg"%>
-          <%= link_to 'Back to Services', admin_services_path, class:"btn btn-primary btn-lg"%>
-          <%= link_to 'Delete service', admin_service_path(@service), method: :delete, data: { confirm: "Are you sure you want to delete the service #{@service.name.upcase}?" }, class:"btn btn-danger" %>
+      <div class="card-body">
+        <div class="order-details-card">
+          <h1>Edit Service</h1>
+          <br>
+          <%= simple_form_for @service, url: admin_service_path(@service) do |f| %>
+            <div class="form-inputs">
+              <%= f.input :name %>
+              <%= f.input :description%>
+              <%= f.button :submit, class:"rounded-btn-no-flex"%>
+              <div>
+              <%= link_to 'Back to Services', admin_services_path, class:"rounded-btn-no-flex"%>
+              <%= link_to 'Delete service', admin_service_path(@service), method: :delete, data: { confirm: "Are you sure you want to delete the service #{@service.name.upcase}?" }, class:"rounded-btn-no-flex" %>
+            </div>
+          </div>
+          <% end %>
         </div>
       </div>
-      <% end %>
     </div>
   </div>
 </div>

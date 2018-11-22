@@ -1,18 +1,25 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 form">
+      <div class="card-body">
+        <div class="order-details-card">
 
-      <h2>Service: <%= @service.name %></h2>
-      <p> <%= @service.description %></p>
+          <h3><%= @service.name %></h3>
+          <br>
+          <p> <%= @service.description %></p>
+          <br>
+          <h3><%= @service_item.content %></h3>
+          <br>
+          <p>Additional Information: <%= @service_item.additional_information %></p>
+          <p>Data Type: <%= @service_item.data_type %></p>
+          <p>Category: <%= @service_item.category %></p>
+           <br>
 
-      <h3>Service Item: <%= @service_item.content %></h3>
-      <p>Additional Information: <%= @service_item.additional_information %></p>
-      <p>Data Type: <%= @service_item.data_type %></p>
-      <p>Category: <%= @service_item.category %></p>
+          <%= link_to 'Update Service Item', edit_admin_service_service_item_path(@service, @service_item), class:"rounded-btn-no-flex" %>
+          <%= link_to 'Back to Services', admin_services_path, class:"rounded-btn-no-flex"%>
 
-      <%= link_to 'Update Service Item', edit_admin_service_service_item_path(@service, @service_item), class:"btn btn-info" %>
-      <%= link_to 'Back to Services', admin_services_path, class:"btn btn-primary btn-lg"%>
-
+        </div>
+      </div>
     </div>
   </div>
 </div>
