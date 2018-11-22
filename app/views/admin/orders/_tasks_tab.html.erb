@@ -1,6 +1,4 @@
 <div class="container">
-
-
 </div>
 
 <!-- Displaying order items & corresponding service items -->
@@ -8,79 +6,10 @@
 <div class="admin-container">
 
   <div class="col-xs-12 col-sm-6 col-md-6">
-    <div class="card dashboard-big-tasks-card">
-      <h3>Filters</h3>
-      <br>
-        <%= form_tag admin_orders_path, method: :get do %>
-        <%= label_tag :service %>
-        <%= select_tag "service", options_from_collection_for_select(Service.all, "id", "name"), prompt: "Filter by  service" %>
-        <!-- Filter by service -->
-        <%= label_tag :status %>
-        <%= select_tag "status", options_for_select([ "Completed", "Pending" ], "Filter by status") %>
-        <!-- Filter by status -->
-        <br>
-        <%= submit_tag "filter", class: "btn btn-large btn-primary" %>
-        <% end %>
-        <!-- Display metrics -->
-        <br>
-        <br>
-      <% tasks = Array.new %>
-      <% mail_tasks = Array.new %>
-      <% clearance_tasks = Array.new %>
-      <% contract_tasks = Array.new %>
-      <% @order_items.each do |order_item| %>
-        <% if order_item.completed == false && order_item.service_item.category == "task" %>
-          <% tasks << order_item %>
-            <% if order_item.service_item.service.name == "Mail Forwarding" %>
-              <% mail_tasks << order_item %>
-            <% elsif order_item.service_item.service.name == "House Clearance" %>
-              <% mail_tasks << order_item %>
-            <% elsif order_item.service_item.service.name == "Contract Cancellation" %>
-              <% contract_tasks << order_item %>
-            <% end %>
-        <% end %>
-      <% end %>
-      <h4><img style="height:25px" src="../assets/task_black_icon.png" alt="task"> Pending Tasks</h4>
-      <h4><%= tasks.count %></h4>
-      <br>
-      <h4><img style="height:25px" src="../assets/task_black_icon.png" alt="task">  House clearance</h4>
-      <h4><%= clearance_tasks.count %></h4>
-      <br>
-      <h4><img style="height:25px" src="../assets/task_black_icon.png" alt="task">  Mail Forwarding</h4>
-      <h4><%= mail_tasks.count %></h4>
-      <br>
-      <h4><img style="height:25px" src="../assets/task_black_icon.png" alt="task">  Contract cancellation</h4>
-      <h4><%= contract_tasks.count %></h4>
-    </div>
+    <%= render 'tasks_tab_big_card' %>
   </div>
 
   <div class="cards-container">
-    <% @order_items.each do |order_item| %>
-
-        <div class="col-xs-12 col-sm-6 col-md-6">
-          <div class="card cards-container">
-            <div class="card dashboard-tasks-card">
-              <h4><%= order_item.service_item.service.name.capitalize %></h4>
-              <br>
-              <p><img style="height:15px" src="../assets/order_black_icon.png" alt="Service"> Order # <%= order_item.order.id %></p>
-              <br>
-              <p><%= order_item.service_item.content.capitalize %> => <%= order_item.content %></p>
-              <%= simple_form_for [:admin, order_item] do |f| %>
-                <%= f.input :completed, input_html: {value: !order_item.completed }, as: :hidden %>
-                <!-- button -->
-                <%= button_tag type: 'submit', class: "not-btn" do %>
-                  <% if order_item.completed %>
-                  <p>Completed</p>
-                    <i class="fas fa-toggle-on"></i>
-                  <% else %>
-                    <p>Pending</p>
-                    <i class="fas fa-toggle-off"></i>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-    <% end %>
+    <%= render "tasks_tab_small_cards" %>
   </div>
 </div>
