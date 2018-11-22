@@ -1,12 +1,18 @@
 
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(222,222,222,0.6) 0%, rgba(0,36,61,0.6) 70%), url('https://picsum.photos/2400/1800?image=964');">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(222,222,222,0.6) 0%, rgba(0,36,61,0.6) 70%), url('https://picsum.photos/2400/1800?image=1025');">
+  <!-- other banner photo options: 1000(summits), 994(sunset), 1021(b&w fog), 1052(b&w ocean), 1064(b&w fog), 1018(green rocks), 1025(dog) -->
+
   <div class="container">
-    <!-- <div class="banner-container"> -->
+
     <div class="row">
       <div class="banner-content">
         <h1>Moving On</h1>
         <p id="banner-paragraph">Home clearance in the event of death</p>
-        <%= link_to "Start now", new_order_path,class:"btn btn-primary btn-lg" %>
+        <% if user_signed_in? %>
+          <%= link_to "Start now", new_order_path,class:"btn btn-primary btn-lg" %>
+        <% else %>
+          <%= link_to "Start now", new_user_session_path,class:"btn btn-primary btn-lg" %>
+        <% end %>
       </div>
     </div>
 
@@ -24,6 +30,6 @@
         </div>
       <% end %>
     </div>
+
   </div>
 </div>
-

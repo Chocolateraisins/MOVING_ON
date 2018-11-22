@@ -3,8 +3,6 @@ class formWizard {
     this.activeStep = 2;
     this.attachListeners();
     this.showPrevNextSubmit();
-    this.totalLength = this.getServiceTitles().length + 1;
-    // this.getServiceTitles();
   }
 
   getServiceTitles() {
@@ -14,7 +12,11 @@ class formWizard {
 
   getServicesLength() {
     const servicesDiv = document.getElementById("servicesDiv");
+    console.log("eee");
+    console.log(servicesDiv);
     const serviceLength = servicesDiv.dataset.servicelength;
+    console.log("the one");
+    console.log(serviceLength);
     return serviceLength;
   }
 
@@ -45,32 +47,20 @@ class formWizard {
     this.hideAllSteps();
     document.getElementById(`step-${this.activeStep}`).hidden = false;
     document.getElementById(`tile-${this.activeStep}`).classList.add('active')
-    // document.getElementById(`tile-${this.activeStep}`).classList.remove('active')
-
-
-
-    // const serviceTitles = this.getServiceTitles();
-
-    // console.log(serviceTitles[this.activeStep]);
-    // serviceTitles[this.activeStep -1].classList.remove("inactive");
-    // serviceTitles[this.activeStep -1].classList.add("active");
     this.showPrevNextSubmit();
-    // console.log("this.activeStep");
-    // console.log(this.activeStep);
-    // console.log("serviceTitles");
-    // console.log(serviceTitles[0]);
+
   }
 
-    previousTab() {
+  previousTab() {
     this.activeStep -= 1;
     this.hideAllSteps();
     document.getElementById(`step-${this.activeStep}`).hidden = false;
     document.getElementById(`tile-${this.activeStep}`).classList.add('active')
-    // document.getElementById(`step-${this.activeStep}`).hidden = false;
-    // console.log(serviceTitles[this.activeStep]);
-    // serviceTitles[this.activeStep -1].classList.add("active");
-    // serviceTitles[this.activeStep -1].classList.remove("inactive");
     this.showPrevNextSubmit()
+  }
+
+  get totalLength() {
+    return this.getServiceTitles().length + 1;
   }
 
   showPrevNextSubmit() {
@@ -80,10 +70,7 @@ class formWizard {
     } else {
       document.querySelector("#previous").style.display = 'inline';
     }
-    // console.log("this.serviceLength");
-    // console.log(this.serviceLength);
 
-      console.log(this.totalLength)
     if (this.activeStep >= this.totalLength) {
       document.querySelector("#next").style.display = 'none';
     } else {
