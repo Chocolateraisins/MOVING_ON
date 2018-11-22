@@ -20,7 +20,7 @@
     <%= f.input :deceased_last_name, label: 'Last name of the deceased', error: 'Last name is mandatory, please specify one' %>
     <%= f.input :deceased_address, label: 'Address of the deceased', error: 'Address is mandatory, please specify one'%>
     <%= f.input :date_of_death, as: :string, input_html: {class: "datepicker"} %>
-    <button class="btn btn-primary" <%= f.button :submit %>Next</button>
+    <button class="rounded-btn new-order" <%= f.button :submit %>Next</button>
 
     <% end %>
     </div>
