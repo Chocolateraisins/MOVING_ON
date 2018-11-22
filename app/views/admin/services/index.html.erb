@@ -1,15 +1,20 @@
 
 <div class="admin-services-page">
-  <h1 class="services-title">Manage your services</h1>
 
-  <div id="new-service-form-btn" class="new-service-form-btn">
-    <%= link_to new_admin_service_path, class:"btn" do %>
-    <i class="fas fa-plus"></i>
+  <div class="manage-services-header">
+    <h1 class="services-title">Manage your services</h1>
+
+    <%= link_to new_admin_service_path, class: "rounded-btn" do %>
+      <i class="fas fa-plus"></i>
+      <div class="a-text">
+        New service
+      </div>
     <% end %>
-    <div class="a-text">
-      New service
-    </div>
   </div>
+
+<!--   <div id="new-service-form-btn" class="new-service-form-btn">
+
+  </div> -->
 
 
   <div class="services">
@@ -32,12 +37,14 @@
 
           <%= render "service_items_headers" %>
 
+          <%#= link_to admin_service_service_item_path(service, service_item) do %>
           <% service.service_items.each do |service_item| %>
             <%= render "service_item", service_mango: service, service_item_mango: service_item %>
             <%#= render "service_item_btns", service_item_mango: service_item %>
+            <%# end %>
           <% end %>
 
-          <div id="new-service-item-form-btn" class="new-service-item-form-btn">
+          <div id="new-service-item-form-btn" class="js-new-service-item-form-btn rounded-btn set-width">
             <i class="fas fa-plus"></i>
             <div class="a-text">
               New service item
@@ -76,7 +83,7 @@
     <% @services.each do |service| %>
 
             <h3>Service: <%= service.name %>
-              <%= link_to 'Show', admin_service_path(service), class:"btn btn-primary" %>
+              <%= link_to 'Show', admin_service_path(service), class: "btn btn-primary" %>
               <%= link_to 'Edit', edit_admin_service_path(service), class:"btn btn-info" %>
               <%= link_to 'Delete service', admin_service_path(service), method: :delete, data: { confirm: "Are you sure you want to delete the service #{service.name.upcase}?" }, class:"btn btn-danger" %></h3>
               <p><%= service.description %></p>

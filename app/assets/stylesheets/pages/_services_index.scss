@@ -56,34 +56,64 @@
 }
 
 .admin-btns {
-  margin-left: 20px;
-  i {
-    color: rgb(80,80,80);
+  margin-left: 8px;
+  a {
+    margin-left: 8px;
+    font-size: 14px;
+    padding: 0px;
+    color: rgb(200,200,200);
     &:hover {
-     i {
       cursor: pointer;
       color: brown;
-      }
     }
   }
+
+  // i {
+  //   color: rgb(80,80,80);
+  //   &:hover {
+  //    i {
+  //     cursor: pointer;
+  //     color: brown;
+  //     }
+  //   }
+  // }
 }
 
-
-.new-service-form-btn {
+.new-service-btn {
   display: flex;
+  flex-direction: row;
   align-items: center;
   font-size: 14px;
-  margin: 20px 0px;
+  color: rgb(80,80,80);
   .a-text {
-    margin-left: 10px;
+    margin-left: 8px;
   }
   &:hover {
-    cursor: pointer;
+    text-decoration: none;
     color: brown;
   }
 }
 
+
+// .new-service-form-btn {
+//   display: flex;
+//   align-items: center;
+//   font-size: 14px;
+//   margin: 20px 0px;
+//   .a-text {
+//     margin-left: 10px;
+//   }
+//   &:hover {
+//     cursor: pointer;
+//     color: brown;
+//   }
+// }
+
 .service-items {
+  .service-item.bigger {
+    height: 40px;
+    background-color: rgb(250,250,250);
+  }
   .service-item {
     display: flex;
     align-items: center;
@@ -91,7 +121,7 @@
     justify-content: space-between;
     border-top: 1px solid rgba(220,224,244,0.4);
     margin: 4px 0 4px 0;
-    padding: 2px 5px;
+    padding: 5px 10px;
     background-color: white;
     font-size: 14px;
     .service-item-content {
@@ -127,6 +157,7 @@
       font-weight: bold;
     }
     .service-item-icon {
+      margin-left: 5px;
       i {
         font-size: 13px;
         color: rgb(80,80,80);
@@ -145,3 +176,22 @@
 .services {
 
 }
+
+.manage-services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.service-description {
+  margin-top: 6px;
+}
+
+
+
+
+
+
+
+
+

@@ -3,17 +3,22 @@ const doSomething = (e) => {
   const el = e.currentTarget;
   // el.classList.add("hidden");
   console.log(el);
-  const newServiceItemForm = document.getElementById("new-service-item-form");
-  newServiceItemForm.classList.remove("hidden");
+  let form = el.nextElementSibling;
+  console.log(form);
+  form.classList.remove("hidden");
 
 }
 
 const newServiceItem = () => {
-  console.log("hola aaaa");
-  const newServiceItemFormBtn = document.getElementById("new-service-item-form-btn");
-  if (newServiceItemFormBtn) {
-    newServiceItemFormBtn.addEventListener("click", doSomething);
-  }
+  // const newServiceItemFormBtn = document.getElementById("new-service-item-form-btn");
+  const jsNewServiceItemFormBtns = document.querySelectorAll(".js-new-service-item-form-btn");
+
+  jsNewServiceItemFormBtns.forEach((serviceBtn) => {
+    serviceBtn.addEventListener("click", doSomething);
+  });
+
+
+
 }
 
 newServiceItem();

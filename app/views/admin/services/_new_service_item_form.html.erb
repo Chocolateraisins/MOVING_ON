@@ -1,6 +1,6 @@
-<%= simple_form_for [service, service_item], url: admin_service_service_items_path(service) do |f| %>
+<%= simple_form_for [service, service_item], url: admin_service_service_items_path(service), html: { class: "hidden"} do |f| %>
 
-  <div id="new-service-item-form" class="service-item hidden">
+  <div id="new-service-item-form" class="service-item">
     <div class="service-item-content service-item-info title-bold">
       <%= f.input :content, label: 'Content of the Service Item', error: 'Content is mandatory, please specify one', label: false, placeholder: "content..." %>
     </div>
@@ -17,7 +17,7 @@
       <%= f.input :unit_price, label: 'Unit price of the Servie Item', error: 'Unit price is mandatory, please specify one', label: false, placeholder: "unit price..." %>
     </div>
     <div class="service-item-action service-item-info title-bold">
-      <%= f.button :submit, "Create", class: "new-service-btn"%>
+      <%= f.button :submit, "Create", class: "new-service-item-btn"%>
     </div>
   </div>
 <% end %>
