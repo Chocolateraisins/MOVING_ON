@@ -71,16 +71,6 @@
       color: brown;
     }
   }
-
-  // i {
-  //   color: rgb(80,80,80);
-  //   &:hover {
-  //    i {
-  //     cursor: pointer;
-  //     color: brown;
-  //     }
-  //   }
-  // }
 }
 
 .new-service-btn {
@@ -98,22 +88,9 @@
   }
 }
 
-
-// .new-service-form-btn {
-//   display: flex;
-//   align-items: center;
-//   font-size: 14px;
-//   margin: 20px 0px;
-//   .a-text {
-//     margin-left: 10px;
-//   }
-//   &:hover {
-//     cursor: pointer;
-//     color: brown;
-//   }
-// }
-
 .service-items {
+  border-bottom: 1px solid rgba(220,224,244,0.8);
+  padding-bottom: 20px;
   .service-item.bigger {
     height: 40px;
     background-color: rgb(250,250,250);
@@ -135,51 +112,53 @@
       background-color: #F4F4F4;
     }
     .service-item-content {
-      width: 25%;
       // background-color: blue;
+      width: 30%;
       &:hover {
         cursor: pointer;
         text-decoration: none;
       }
     }
     .service-item-additional-information {
-      width: 25%;
       // background-color: pink;
+      width: 30%;
       &:hover {
         cursor: pointer;
         text-decoration: none;
       }
     }
     .service-item-category {
-      width: 12.5%;
       // background-color: blue;
+      width: 12.5%;
+      // text-align: center;
+      &:hover {
+        cursor: pointer;
+        text-decoration: none;
+      }
+    }
+    .service-item-type {
+      // background-color: red;
+      width: 12.5%;
+      text-align: center;
       &:hover {
         cursor: pointer;
         text-decoration: none;
       }
     }
     .service-item-price {
+      // background-color: brown;
       width: 12.5%;
       text-align: center;
-      // background-color: brown;
       &:hover {
         cursor: pointer;
         text-decoration: none;
       }
 
     }
-    .service-item-type {
-      // background-color: red;
-      width: 12.5%;
-      &:hover {
-        cursor: pointer;
-        text-decoration: none;
-      }
-    }
     .service-item-action {
       // background-color: orange;
-      text-align: center;
       width: 12.5%;
+      text-align: center;
     }
     .service-item-info {
       color: black;
