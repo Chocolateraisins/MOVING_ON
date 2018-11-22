@@ -16,7 +16,13 @@ class OrdersController < ApplicationController
       flash[:notice] = "Please log in to create a new order."
     elsif
       @order.save
-      redirect_to order_order_items_path(@order)
+      if params[:order][:desired_services]
+        params[:order][:desired_services].each {|service_id| DesiredService.create(service_id: service_id, order_id: @order.id) }
+        redirect_to order_order_items_path(@order)
+      else
+        redirect_to new_order_path
+        flash[:alert] = "Please select at least one service"
+      end
     else
       render :new
     end

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_111933) do
+ActiveRecord::Schema.define(version: 2018_11_22_083345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "desired_services", force: :cascade do |t|
+    t.integer "amount"
+    t.bigint "service_id"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_desired_services_on_order_id"
+    t.index ["service_id"], name: "index_desired_services_on_service_id"
+  end
 
   create_table "inventories", force: :cascade do |t|
     t.string "description"
@@ -86,6 +96,8 @@ ActiveRecord::Schema.define(version: 2018_11_19_111933) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "desired_services", "orders"
+  add_foreign_key "desired_services", "services"
   add_foreign_key "inventories", "orders"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "service_items"

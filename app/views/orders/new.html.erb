@@ -5,23 +5,28 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 main-card">
    <ul class="timeline-container">
-  <div class="step-progress-bar">
-    <li class="timeline-number active"> 1 </li>
-    <% step = 2 %>
-    <% Service.all.each_with_index do |service, index| %>
-      <li class="inactive timeline-number"> <%= step %> <%#= service.name%>
-      </li>
-      <% step += 1 %>
-    <% end %>
-  </div>
-</ul>
+      <div class="step-progress-bar">
+        <li class="timeline-number active"> 1 </li>
+        <% step = 2 %>
+        <% Service.all.each_with_index do |service, index| %>
+          <li class="inactive timeline-number"> <%= step %> <%#= service.name%>
+          </li>
+          <% step += 1 %>
+        <% end %>
+      </div>
+    </ul>
     <%= simple_form_for @order do |f| %>
-    <%= f.input :deceased_first_name, label: 'First name of the deceased', error: 'First name is mandatory, please specify one' %>
-    <%= f.input :deceased_last_name, label: 'Last name of the deceased', error: 'Last name is mandatory, please specify one' %>
-    <%= f.input :deceased_address, label: 'Address of the deceased', error: 'Address is mandatory, please specify one'%>
-    <%= f.input :date_of_death, as: :string, input_html: {class: "datepicker"} %>
-    <button class="rounded-btn new-order" <%= f.button :submit %>Next</button>
 
+      <%= f.input :deceased_first_name, label: 'First name of the deceased', error: 'First name is mandatory, please specify one' %>
+      <%= f.input :deceased_last_name, label: 'Last name of the deceased', error: 'Last name is mandatory, please specify one' %>
+      <%= f.input :deceased_address, label: 'Address of the deceased', error: 'Address is mandatory, please specify one'%>
+      <%= f.input :date_of_death, as: :string, input_html: {class: "datepicker"} %>
+
+      <p><strong>Plese select the services you would like us to assist you with: </strong></p>
+
+      <%= f.collection_check_boxes :desired_services, Service.all, :id, :name, include_hidden: false %>
+      <br><br>
+      <button class="rounded-btn new-order" <%= f.button :submit %>Next</button>
     <% end %>
     </div>
   </div>

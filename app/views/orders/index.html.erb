@@ -22,21 +22,21 @@
 
 
               <div class="row">
-                <%  Service.all.each do |service|%>
-                  <div class="col col-xs-12 col-sm-4">
-                    <div class="order-card">
-                      <div class="card-body">
-                        <div class="order-card-subtotal">
-                          <p><%= service.description %></p>
-                          <p>Completed tasks: <%= order.state_per_service(service) %></p>
-                          <p class="card-text"><strong> Service Subtotal: <%= order.price_per_service(service) %>€ </strong></p>
-                        </div>
-                        <div class="order-card-service-name">
-                          <h5 class="card-title"><%= service.name %> </h5>
+                <%  order.chosen_services.each do |service|%>
+                    <div class="col col-xs-12 col-sm-4">
+                      <div class="order-card">
+                        <div class="card-body">
+                          <div class="order-card-subtotal">
+                              <p><%= service.description %></p>
+                              <p>Completed tasks: <%= order.state_per_service(service) %></p>
+                              <p class="card-text"><strong> Service Subtotal: <%= order.price_per_service(service) %>€ </strong></p>
+                              </div>
+                              <div class="order-card-service-name">
+                              <h5 class="card-title"><%= service.name %> </h5>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
                 <% end %>
               </div>
 

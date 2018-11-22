@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
   belongs_to :user
   has_many :inventories, dependent: :nullify
+  has_many :desired_services, dependent: :destroy
+
   has_many :order_items, dependent: :nullify
   has_many :service_items, through: :order_items
   has_many :services, through: :service_items
@@ -13,6 +15,10 @@ class Order < ApplicationRecord
   def set_total_price
     self.invoice_amount = calculate_price_per(self.order_items)
     self.save
+  end
+
+  def chosen_services
+    desired_services.map { |desired_service| desired_service.service }
   end
 
   def calculate_price_per(collection)
@@ -40,5 +46,3 @@ class Order < ApplicationRecord
     "#{completed_count} / #{total_count} "
   end
 end
-
-
