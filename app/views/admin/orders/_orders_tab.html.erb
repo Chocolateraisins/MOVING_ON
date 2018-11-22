@@ -5,15 +5,15 @@
     <% @orders.each do |order| %>
       <div class="col-xs-12 col-sm-6 col-md-6">
         <div class="card dashboard-orders-card">
-          <h3 class = "dashboard-card-title">Order #<%= order.id %></h3>
+          <h3 class = "dashboard-card-title"> Order #<%= order.id %></h3>
           <div class="separator"></div>
           <br>
           <p class = "card-text"><%= cl_image_tag("user_white_icon",
-          width: 15,crop: :fill) %> Customer :<%= order.user.first_name %> <%= order.user.last_name %></p>
+          width: 15,crop: :fill) %>  Customer :<%= order.user.first_name %> <%= order.user.last_name %></p>
           <p class="card-text"><%= cl_image_tag("invoice_white_icon",
           width: 15,crop: :fill) %> Invoice amount: <%= order.invoice_amount %>$</p>
           <p class="card-text"><%= cl_image_tag("pin_white_icon",
-          width: 15,crop: :fill) %>Address: <%= order.deceased_address %></p>
+          width: 15,crop: :fill) %>  Address: <%= order.deceased_address %></p>
           <p class ="card-text"><%= link_to "See details", order_path(order), method: :get %></p>
           <%= button_to "Cancel order", admin_order_path(order), method: :delete, :class => "admin-rounded-btn", data: {confirm: "Are you sure?"} %>
         </div>

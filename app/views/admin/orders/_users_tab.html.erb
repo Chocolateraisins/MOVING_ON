@@ -1,86 +1,42 @@
 <div class="container">
-  <div class="row">
-
-    <!-- Metrics - total users -->
-    <div class="row">
-      <div class="order-card">
-    <div class="col-xs-12 col-sm-4">
-      <div class="order-details-card">
-        <h4><%= cl_image_tag("user_white_icon",
-          width: 25,crop: :fill) %>  <%= User.all.count %></h4>
-        <div class="order-card-service-name" style="background-color: white, padding:0">
-        <p>Total users</p>
-      </div>
-        </div>
-        </div>
-    </div>
-
-    <div class="order-card">
-      <div class="card-body col-xs-12 col-sm-4">
-        <div class="order-details-card">
-          <h4><%= cl_image_tag("user_white_icon",width: 25,crop: :fill) %>  <%= User.all.count %></h4>
-          <p class="card-text"><strong>Yo</strong></p>
-        </div>
-        <div class="order-card-service-name">
-          <p>Total users</p>
+  <div class="row user-container">
+      <!-- Metrics - total users -->
+      <div class="col-xs-12 col-md-3">
+        <div class="metrics-box">
+          <p class="dashboard-card-title"><%= User.all.count %></p>
+          <p><%= cl_image_tag("single_user_black_icon",
+        width: 15,crop: :fill) %>Total users</p>
         </div>
       </div>
-    </div>
 
-        <div class="order-card">
-      <div class="card-body col-xs-12 col-sm-4">
-        <div class="order-details-card">
-          <h4><%= cl_image_tag("user_white_icon",width: 25,crop: :fill) %>  <%= User.all.count %></h4>
-          <p class="card-text"><strong>Yo</strong></p>
-        </div>
-        <div class="order-card-service-name">
-          <p>Total users</p>
+      <!-- Metrics - purchasing users -->
+      <div class="col-xs-12 col-md-3">
+        <div class="metrics-box">
+          <% active_users = Array.new %>
+            <% User.all.each do |any_user| %>
+              <% unless any_user.orders.count == 0 %>
+              <% active_users << any_user %>
+            <% end %>
+          <% end %>
+          <p class="dashboard-card-title"><%= active_users.count %></p>
+          <p><%= cl_image_tag("single_user_black_icon",
+        width: 15,crop: :fill) %>Purchasing users</p>
         </div>
       </div>
-    </div>
-
-        <div class="order-card">
-      <div class="card-body col-xs-12 col-sm-4">
-        <div class="order-details-card">
-          <h4><%= cl_image_tag("user_white_icon",width: 25,crop: :fill) %>  <%= User.all.count %></h4>
-          <p class="card-text"><strong>Yo</strong></p>
-        </div>
-        <div class="order-card-service-name">
-          <p>Total users</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-    <!-- Metrics - purchasing users -->
-    <div class="col-xs-12 col-sm-4">
-      <div class="card dashboard-metric-card">
-        <% active_users = Array.new %>
-        <% User.all.each do |any_user| %>
-        <% unless any_user.orders.count == 0 %>
-        <% active_users << any_user %>
-        <% end %>
-        <% end %>
-        <h4><%= active_users.count %></h4>
-        <p>Purchasing users</p>
-      </div>
-    </div>
 
     <!-- Metrics - active users -->
-    <div class="col-xs-12 col-sm-4">
-      <div class="card dashboard-metric-card">
-        <% users = Order.where(:created_at => Date.parse("01-06-2018")..Date.parse("01-12-2018")).map {|o| o.user} %>
-        <h4><%= users.count %></h4>
-        <p>Active users</p>
+      <div class="col-xs-12 col-md-3">
+        <div class="metrics-box">
+          <% users = Order.where(:created_at => Date.parse("01-06-2018")..Date.parse("01-12-2018")).map {|o| o.user} %>
+          <p class="dashboard-card-title"><%= users.count %></p>
+          <p><%= cl_image_tag("single_user_black_icon",
+          width: 15,crop: :fill) %>Active users</p>
+        </div>
       </div>
-    </div>
   </div>
-
-  </div>
-
 </div>
 
-</div>
+
 
 <!-- User cards -->
 <div class="container">
@@ -90,7 +46,7 @@
         <div class="card dashboard-users-card">
           <p><%= cl_image_tag("user_white_icon",
           width: 18,crop: :fill) %> Customer: <%= user.first_name %> <%= user.last_name %></p>
-            <div class="separator"></div>
+          <div class="separator"></div>
           <p><%= cl_image_tag("order_white_icon",
           width: 15,crop: :fill) %> Orders: <%= user.orders.count %></p>
         </div>
@@ -98,4 +54,5 @@
     <% end %>
   </div>
 </div>
+
 
