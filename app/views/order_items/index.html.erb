@@ -2,14 +2,11 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 main-card">
 
-
        <%= render 'shared/timeline' %>
 
       <% if @order.order_items.exists?%>
       <%#= link_to "Back to Order Overview", orders_path,class:"btn btn-primary btn-sm" %>
       <% end %>
-
-
 
       <%= form_for @order do |f| %>
         <% Service.all.each_with_index do |service, index| %>
@@ -30,7 +27,16 @@
                     <!-- Checking if there is an item -->
                     <% order_item = @order.order_items.find_by(service_item: item) || OrderItem.create(service_item: item, order: @order) %>
                     <div class="item-content">
-                      <input style="width:100%" type="<%= item.data_type %>" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]" id="<%= 'order_deceased_address' if item.content.include?("address") %>" class= "<%= 'datepicker' if item.data_type.include?("date") %> <%= 'datepicker-time' if item.data_type.include?("datetime-local") %> input">
+                      <% if item.data_type == "yes or no" %>
+                        <select name="order_items[<%= order_item.id %>]" style="width:100%" type="<%= item.data_type %>" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]" class= " input ">
+                          <option value="yes">yes</option>
+                          <option value="no">no</option>
+                        </select>
+                 <!--      <input style="width:100%" type="<%= item.data_type %>" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]" collection="['yes'], ['n']" > -->
+                      <% else %>
+                        <input style="width:100%" type="<%= item.data_type %>" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]" id="<%= 'order_deceased_address' if item.data_type.include?("address") %>" class= "<%= 'datepicker' if item.data_type.include?("date") %> <%= 'datepicker-time' if item.data_type.include?("datetime-local") %> input <%= 'dropdown' if item.data_type.include?("yes or no") %>">
+
+                      <% end %>
                     </div>
                   </div>
                 <% end %>
