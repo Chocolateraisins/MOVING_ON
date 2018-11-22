@@ -16,8 +16,8 @@ class Order < ApplicationRecord
   end
 
   def calculate_price_per(collection)
-  total = 0
-   collection.each do |order_item|
+    total = 0
+    collection.each do |order_item|
       item = order_item.service_item
       if item.data_type == "number"
         total += order_item.content.to_i * item.unit_price.to_i
@@ -31,6 +31,13 @@ class Order < ApplicationRecord
   def price_per_service(service)
     collection = self.order_items.joins(:service_item).where('service_items.service_id = ?', service.id)
     calculate_price_per(collection)
+  end
+
+  def state_per_service(service)
+    tasks = self.order_items.joins(:service_item).where("service_items.category = 'task'")
+    completed_count = tasks.where(completed: true).count
+    total_count = tasks.count
+    "#{completed_count} / #{total_count} "
   end
 end
 
