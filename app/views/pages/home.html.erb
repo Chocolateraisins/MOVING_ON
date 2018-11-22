@@ -8,11 +8,11 @@
       <div class="banner-content">
         <h1>Moving On</h1>
         <p id="banner-paragraph">Home clearance in the event of death</p>
-        
+
         <% if user_signed_in? %>
-          <%= link_to "Start now", new_order_path,class:"rounded-btn-hom" %>
+          <%= link_to "Start now", new_order_path,class:"rounded-btn-home" %>
         <% else %>
-          <%= link_to "Start now", new_user_session_path,class:"rounded-btn-hom" %>
+          <%= link_to "Start now", new_user_session_path,class:"rounded-btn-home" %>
         <% end %>
       </div>
     </div>
