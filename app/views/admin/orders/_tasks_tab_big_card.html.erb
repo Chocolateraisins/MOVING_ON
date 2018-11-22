@@ -1,16 +1,29 @@
 <div class="card dashboard-big-tasks-card">
-      <h3>Filters</h3>
-      <br>
+      <h3><strong>FILTERS</strong></h3>
         <%= form_tag admin_orders_path, method: :get do %>
-        <%= label_tag :service %>
-        <%= select_tag "service", options_from_collection_for_select(Service.all, "id", "name"), prompt: "Filter by  service" %>
         <!-- Filter by service -->
-        <%= label_tag :status %>
-        <%= select_tag "status", options_for_select([ "Completed", "Pending" ], "Filter by status") %>
+        <br>
+        <div class="service-filter">
+          <p class="form-text"><%= label_tag :service %></p>
+          <%= select_tag "service", options_from_collection_for_select(Service.all, "id", "name"), prompt: "Filter by  service", :class => 'form_tag form-text' %>
+        </div>
         <!-- Filter by status -->
         <br>
-        <%= submit_tag "filter", class: "btn btn-large btn-primary" %>
+      <div class="form-row">
+        <div class="service-filter">
+
+          <p class="form-text"><%= label_tag :status%></p>
+          <%= select_tag "status", options_for_select([ "Completed", "Pending" ], "Filter by status"), :class => 'form_tag form-text' %>
+        </div>
+      </div>
+        <!-- submit -->
+        <br>
+      <div class="form-row">
+        <%= submit_tag "Submit", :class => 'admin-rounded-btn' %>
         <% end %>
+      </div>
+
+
         <!-- Display metrics -->
         <br>
         <br>
@@ -41,4 +54,4 @@
       <br>
       <h4><img style="height:25px" src="../assets/task_black_icon.png" alt="task">  Contract cancellation</h4>
       <h4><%= contract_tasks.count %></h4>
-    </div>
+</div>

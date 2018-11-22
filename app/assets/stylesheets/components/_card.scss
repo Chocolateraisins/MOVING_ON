@@ -136,12 +136,12 @@ padding: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   background-color: #B9B999;
   color: white;
-  text-align: center;
   padding: 20px;
   margin: 10px 10px;
   height: 300px;
   width: 250px;
   margin: 10px 10px;
+  text-align: center;
   justify-content: center;
   font-size: 14px;
 }
@@ -187,14 +187,13 @@ padding: 5px;
 
 .dashboard-big-tasks-card {
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  background-color: #B9B999;
-  color: white;
+  background-color: rgb(192,192,192);
+  color: black;
   text-align: center;
   padding: 10px;
   padding-top: 30px;
   margin-top: 10px;
   height: 540px;
-  width: 300px;
 }
 
 .test-card {

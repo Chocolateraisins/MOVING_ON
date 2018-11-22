@@ -1,3 +1,56 @@
-.nav-tabs {
+.moving-on-tabs {
   margin: 20px;
+  border-bottom: solid black 3px;
+
+  li {
+    padding: 5px;
+    color: black;
+  }
+
+  li.active a {
+    border: none;
+    background: none;
+    border-top: solid black 3px;
+  }
+
+  li a {
+    border: none;
+    background: none;
+    color: black;
+  }
+
+  li a:hover {
+    border: none;
+    background: none;
+    border-top: solid black 3px;
+    color: black;
+  }
+
+  li.active a:active {
+    border: none;
+    background: none;
+    border-top: solid black 3px;
+  }
+
+   li.active a:focus {
+    border: none;
+    background: none;
+    border-top: solid black 3px;
+  }
+
+
+  li a:active {
+    border: none;
+    background: none;
+    border-top: solid black 3px;
+  }
+
+  li a:focus {
+    border: none;
+    background: none;
+    border-top: solid black 3px;
+  }
+
 }
+
+

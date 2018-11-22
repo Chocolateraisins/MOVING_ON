@@ -3,16 +3,55 @@
 
     <!-- Metrics - total users -->
     <div class="row">
+      <div class="order-card">
     <div class="col-xs-12 col-sm-4">
-      <div class="card dashboard-metric-card">
+      <div class="order-details-card">
         <h4><%= cl_image_tag("user_white_icon",
           width: 25,crop: :fill) %>  <%= User.all.count %></h4>
-        <div class="white-box" style="background-color: white, padding:0">
+        <div class="order-card-service-name" style="background-color: white, padding:0">
         <p>Total users</p>
       </div>
         </div>
+        </div>
     </div>
 
+    <div class="order-card">
+      <div class="card-body col-xs-12 col-sm-4">
+        <div class="order-details-card">
+          <h4><%= cl_image_tag("user_white_icon",width: 25,crop: :fill) %>  <%= User.all.count %></h4>
+          <p class="card-text"><strong>Yo</strong></p>
+        </div>
+        <div class="order-card-service-name">
+          <p>Total users</p>
+        </div>
+      </div>
+    </div>
+
+        <div class="order-card">
+      <div class="card-body col-xs-12 col-sm-4">
+        <div class="order-details-card">
+          <h4><%= cl_image_tag("user_white_icon",width: 25,crop: :fill) %>  <%= User.all.count %></h4>
+          <p class="card-text"><strong>Yo</strong></p>
+        </div>
+        <div class="order-card-service-name">
+          <p>Total users</p>
+        </div>
+      </div>
+    </div>
+
+        <div class="order-card">
+      <div class="card-body col-xs-12 col-sm-4">
+        <div class="order-details-card">
+          <h4><%= cl_image_tag("user_white_icon",width: 25,crop: :fill) %>  <%= User.all.count %></h4>
+          <p class="card-text"><strong>Yo</strong></p>
+        </div>
+        <div class="order-card-service-name">
+          <p>Total users</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
     <!-- Metrics - purchasing users -->
     <div class="col-xs-12 col-sm-4">
       <div class="card dashboard-metric-card">
@@ -38,8 +77,10 @@
   </div>
 
   </div>
+
 </div>
 
+</div>
 
 <!-- User cards -->
 <div class="container">
