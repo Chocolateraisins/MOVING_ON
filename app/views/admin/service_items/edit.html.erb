@@ -10,7 +10,7 @@
         <div class="form-inputs">
           <%= f.input :content %>
           <%= f.input :additional_information %>
-          <%= f.input :data_type, collection: ["text", "number", "date", "datetime-local" "address"]%>
+          <%= f.input :data_type, collection: ["text", "number", "date", "datetime-local" "address", "yes or no"]%>
           <%= f.input :category, collection: ["information", "task"] %>
           <%= f.button :submit, class:"btn btn-primary btn-lg"%>
           <%= link_to 'Back to Services', admin_services_path, class:"btn btn-primary btn-lg"%>

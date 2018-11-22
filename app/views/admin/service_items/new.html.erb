@@ -7,7 +7,7 @@
     <%= simple_form_for [@service, @service_item], url: admin_service_service_items_path do |f| %>
     <%= f.input :content, label: 'Content of the Service Item', error: 'Content is mandatory, please specify one' %>
     <%= f.input :additional_information, label: 'Add some information to display to the user' %>
-    <%= f.input :data_type, label: 'Data type of the Service Item', error: 'Data type is mandatory, please specify one', collection: ["text", "number", "date", "address"] %>
+    <%= f.input :data_type, label: 'Data type of the Service Item', error: 'Data type is mandatory, please specify one', collection: ["text", "number", "date", "address", "yes or no"] %>
     <%= f.input :category, label: 'Category of the Service Item', error: 'Category is mandatory, please specify one', collection: ["information", "task"] %>
     <%= f.input :unit_price, label: 'Unit price of the Servie Item', error: 'Unit price is mandatory, please specify one' %>
     <%= f.button :submit, class:"btn btn-primary btn-lg"%>

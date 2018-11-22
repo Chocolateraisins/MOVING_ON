@@ -30,7 +30,26 @@
                     <!-- Checking if there is an item -->
                     <% order_item = @order.order_items.find_by(service_item: item) || OrderItem.create(service_item: item, order: @order) %>
                     <div class="item-content">
-                      <input style="width:100%" type="<%= item.data_type %>" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]" id="<%= 'order_deceased_address' if item.content.include?("address") %>" class= "<%= 'datepicker' if item.data_type.include?("date") %> <%= 'datepicker-time' if item.data_type.include?("datetime-local") %> input">
+                      <%# if item.data_type == "yes or no" %>
+                       <!--  <select type="text" name="order_items[<%#= order_item.id %>]" id="<%#= 'order_deceased_address' if item.content.include?("address") %>">
+                          <option value="yes">yes</option>
+                          <option value="no">no</option>
+                        </select> -->
+                 <!--      <input style="width:100%" type="<%= item.data_type %>" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]" collection="['yes'], ['n']" > -->
+                      <%# else %>
+                        <input style="width:100%" type="<%= item.data_type %>" value="<%= order_item.content %>" name="order_items[<%= order_item.id %>]" id="<%= 'order_deceased_address' if item.content.include?("address") %>" class= "<%= 'datepicker' if item.data_type.include?("date") %> <%= 'datepicker-time' if item.data_type.include?("datetime-local") %> input">
+
+                      <%# end %>
+
+                      <%#= 'datepicker-time' if item.data_type.include?("datetime-local") %>
+<!--
+<input type="text" name="city" list="yes-or-no">
+<datalist id="yes-or-no">
+  <option value="yes">
+  <option value="no">
+</datalist> -->
+
+
                     </div>
                   </div>
                 <% end %>
