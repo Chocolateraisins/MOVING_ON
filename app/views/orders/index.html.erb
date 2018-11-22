@@ -2,31 +2,48 @@
       <% @orders.each do |order| %>
 
         <div class="row">
-          <div class="col-xs-12 col-sm-10 col-sm-offset-1 main-card">
-            <h1>Services Order Overview</h1>
-            <%= link_to "View Order Details", order_path(order),class:"btn btn-primary btn-sm" %>
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div class="main-card">
+              <h1>Order Summary</h1>
+              <hr/>
+              <%= link_to "Details", order_path(order),class:"btn btn-primary btn-sm" %>
+              <br>
+              <br>
+              <h3>Order Details <!-- #<%= order.id %> --></h3>
+              <hr/ style="width: 50%">
+              <p>Order Date: <%= order.created_at %></p>
+              <p>Customer: <%= order.user.first_name %> <%= order.user.last_name %></p>
+              <p>Deceased identity: <%= order.deceased_first_name %> <%= order.deceased_last_name %></p>
+              <p>Deceased address: <%= order.deceased_address %></p>
+              <%= render 'shared/order-status' %>
+              <p><strong> Order Total: <%= order.invoice_amount %>€ </strong></p>
 
-            <h3>Order Details <!-- #<%= order.id %> --></h3>
-            <p>Order Date: <%= order.created_at %></p>
-            <p>Customer: <%= order.user.first_name %> <%= order.user.last_name %></p>
-            <p>Status: <%= order.status %></p>
+              <h1>Selected Services</h1>
+              <hr/ style="width: 50%">
 
-            <p>Deceased identity: <%= order.deceased_first_name %> <%= order.deceased_last_name %></p>
-            <p>Deceased address: <%= order.deceased_address %></p>
 
-            <p>Invoice: <%= order.invoice_amount %></p>
+              <div class="row">
+                <%  Service.all.each do |service|%>
+                  <div class="col col-xs-12 col-sm-4">
+                    <div class="order-card">
+                      <div class="card-body">
+                        <div class="order-card-subtotal">
+                          <p><%= service.description %></p>
+                          <p class="card-text"><strong> Service Subtotal: <%= order.price_per_service(service) %>€ </strong></p>
+                        </div>
+                        <div class="order-card-service-name">
+                          <h5 class="card-title"><%= service.name %> </h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
 
-            <h1>Services we will help you with</h1>
 
-            <%= form_for order do |f| %>
-            <% Service.all.each do |service| %>
-            <h3><%= service.name %></h3>
-
-            <% end %>
-            <% end %>
-            <%= link_to "Edit this order", order_order_items_path(order),class:"btn btn-info btn-sm" %>
-            <%= link_to "Delete this order", order_path(order), method: :delete, class:"btn btn-danger btn-sm" %>
-
+               <%= link_to "Edit this order", order_order_items_path(order),class:"btn btn-info btn-sm" %>
+              <%= link_to "Delete this order", order_path(order), method: :delete, class:"btn btn-danger btn-sm" %>
+            </div>
           </div>
         </div>
       <% end %>
