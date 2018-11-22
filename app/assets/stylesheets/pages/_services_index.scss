@@ -29,9 +29,13 @@
   align-items: center;
   justify-content: flex-start;
   .service-name {  // background-color: pink;
-
     font-size: 18px;
     font-weight: bold;
+    color: #666666;
+    &:hover {
+      text-decoration: none;
+      color: brown;
+    }
   }
 }
 
@@ -61,7 +65,7 @@
     margin-left: 8px;
     font-size: 14px;
     padding: 0px;
-    color: rgb(200,200,200);
+    color: rgb(100,100,100);
     &:hover {
       cursor: pointer;
       color: brown;
@@ -113,6 +117,9 @@
   .service-item.bigger {
     height: 40px;
     background-color: rgb(250,250,250);
+    &:hover {
+     background-color: rgb(250,250,250);
+    }
   }
   .service-item {
     display: flex;
@@ -124,27 +131,50 @@
     padding: 5px 10px;
     background-color: white;
     font-size: 14px;
+    &:hover {
+      background-color: #F4F4F4;
+    }
     .service-item-content {
       width: 25%;
       // background-color: blue;
+      &:hover {
+        cursor: pointer;
+        text-decoration: none;
+      }
     }
     .service-item-additional-information {
       width: 25%;
       // background-color: pink;
+      &:hover {
+        cursor: pointer;
+        text-decoration: none;
+      }
     }
     .service-item-category {
       width: 12.5%;
       // background-color: blue;
+      &:hover {
+        cursor: pointer;
+        text-decoration: none;
+      }
     }
     .service-item-price {
       width: 12.5%;
       text-align: center;
       // background-color: brown;
+      &:hover {
+        cursor: pointer;
+        text-decoration: none;
+      }
 
     }
     .service-item-type {
       // background-color: red;
       width: 12.5%;
+      &:hover {
+        cursor: pointer;
+        text-decoration: none;
+      }
     }
     .service-item-action {
       // background-color: orange;
@@ -152,6 +182,8 @@
       width: 12.5%;
     }
     .service-item-info {
+      color: black;
+
     }
     .title-bold {
       font-weight: bold;

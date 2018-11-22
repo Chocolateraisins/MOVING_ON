@@ -1,25 +1,26 @@
-<%#= link_to admin_service_service_item_path(service_mango, service_item_mango) do %>
   <div class="service-item">
-    <div class="service-item-content service-item-info">
-      <%= service_item_mango.content%>
-    </div>
-    <div class="service-item-additional-information service-item-info">
-      <%= service_item_mango.additional_information%>
-    </div>
-    <div class="service-item-category service-item-info">
-      <%= service_item_mango.category%>
-    </div>
-    <div class="service-item-type service-item-info">
-      <%= service_item_mango.data_type%>
-    </div>
-    <div class="service-item-price service-item-info">
-      <%= service_item_mango.unit_price%>
-    </div>
-    <div class="service-item-action service-item-info">
-      <%#= link_to admin_service_service_item_path(service_mango, service_item_mango), class: "service-item-icon" do %>
-      <!-- <i class="far fa-eye"></i> -->
-      <%# end %>
 
+    <%= link_to admin_service_service_item_path(service_mango, service_item_mango), class: "service-item-content service-item-info" do %>
+        <%= service_item_mango.content%>
+    <% end %>
+
+    <%= link_to admin_service_service_item_path(service_mango, service_item_mango), class: "service-item-additional-information service-item-info" do %>
+    <%= service_item_mango.additional_information%>
+    <% end %>
+
+    <%= link_to admin_service_service_item_path(service_mango, service_item_mango), class: "service-item-category service-item-info" do %>
+    <%= service_item_mango.category%>
+    <% end %>
+
+    <%= link_to admin_service_service_item_path(service_mango, service_item_mango), class: "service-item-type service-item-info" do %>
+    <%= service_item_mango.data_type%>
+    <% end %>
+
+    <%= link_to admin_service_service_item_path(service_mango, service_item_mango), class: "service-item-price service-item-info" do %>
+    <%= service_item_mango.unit_price%>
+    <% end %>
+
+    <div class="service-item-action service-item-info">
       <%= link_to edit_admin_service_service_item_path(service_mango, service_item_mango), class: "service-item-icon" do %>
         <i class="fas fa-edit"></i>
         <% end %>
@@ -28,6 +29,7 @@
         <i class="far fa-trash-alt"></i>
       <% end %>
     </div>
+
   </div>
-<%# end %>
+
 <!-- ### select same words multiple times cmd + d -->

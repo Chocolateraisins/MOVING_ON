@@ -12,19 +12,18 @@
     <% end %>
   </div>
 
-<!--   <div id="new-service-form-btn" class="new-service-form-btn">
-
-  </div> -->
-
-
   <div class="services">
     <% @services.each do |service| %>
       <div class="service-wrapper">
 
         <div class="service-name-wrapper">
-          <div class="service-name">
+
+          <%= link_to admin_service_path(service), class: "service-name" do %>
+          <!-- <div class="service-name"> -->
             <%= service.name %>
-          </div>
+          <!-- </div> -->
+          <% end %>
+
           <%= render "admin_btns", service_mango: service %>
         </div>
 
@@ -37,11 +36,9 @@
 
           <%= render "service_items_headers" %>
 
-          <%#= link_to admin_service_service_item_path(service, service_item) do %>
           <% service.service_items.each do |service_item| %>
             <%= render "service_item", service_mango: service, service_item_mango: service_item %>
             <%#= render "service_item_btns", service_item_mango: service_item %>
-            <%# end %>
           <% end %>
 
           <div id="new-service-item-form-btn" class="js-new-service-item-form-btn rounded-btn set-width">
@@ -58,13 +55,6 @@
     <% end %>
   </div>
 </div>
-
-
-
-
-
-
-
 
 
 
