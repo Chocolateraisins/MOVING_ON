@@ -6,8 +6,9 @@
       <div class="banner-content">
         <h1>Moving On</h1>
         <p id="banner-paragraph">Home clearance in the event of death</p>
-        <%= link_to "Start now", new_order_path,class:"btn btn-primary btn-lg" %>
-      </div>
+        <%= link_to "Start now", new_order_path, class: "rounded-btn-home"  %>
+         <!-- # class: "rounded-btn home" -->
+         </div>
     </div>
 
     <div class="row margin-top">
@@ -16,7 +17,8 @@
           <div class="card homepage-card" >
             <div class="card-body">
               <h4 class="card-title"><%= service.name %> </h4>
-              <img style="height:25px" src="../assets/service_icon.png" alt="Service">
+              <hr/ class="homepage-card-hr">
+              <!-- <img style="height:25px" src="../assets/service_icon.png" alt="Service"> -->
               <p class="card-text"><%= service.description %> </p>
             </div>
           </div>

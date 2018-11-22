@@ -10,11 +10,26 @@
 
 .homepage-card {
   bottom: 0px;
-  background-color: rgba(50,50,50,0.1);
+  background-color: rgba(50,50,50,0.3);
   border-radius: 5px;
   color: rgb(229, 227, 227);
   margin-top: 15px;
+  padding:10px;
 }
+
+.homepage-card:hover {
+  background-color: rgba(50,50,50,0.5);
+}
+
+.homepage-card-hr {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid rgba(229, 227, 227, 0.5);
+  margin: 1em 0;
+  padding-left: 0px;
+
+}
+
 
 .order-card {
   bottom: 0px;
@@ -98,9 +113,7 @@ padding: 5px;
   background: black;
   opacity: 0;
 }
-.homepage-card:hover {
-  background-color: rgba(50,50,50,0.3);
-}
+
 
 .main-card-services {
   background: white;

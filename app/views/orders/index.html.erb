@@ -15,7 +15,6 @@
               <p>Customer: <%= order.user.first_name %> <%= order.user.last_name %></p>
               <p>Deceased identity: <%= order.deceased_first_name %> <%= order.deceased_last_name %></p>
               <p>Deceased address: <%= order.deceased_address %></p>
-              <%= render 'shared/order-status' %>
               <p><strong> Order Total: <%= order.invoice_amount %>€ </strong></p>
 
               <h1>Selected Services</h1>
@@ -29,6 +28,7 @@
                       <div class="card-body">
                         <div class="order-card-subtotal">
                           <p><%= service.description %></p>
+                          <p>Completed tasks: <%= order.state_per_service(service) %></p>
                           <p class="card-text"><strong> Service Subtotal: <%= order.price_per_service(service) %>€ </strong></p>
                         </div>
                         <div class="order-card-service-name">

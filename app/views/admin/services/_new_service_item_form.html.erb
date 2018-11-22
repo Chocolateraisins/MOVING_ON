@@ -11,7 +11,7 @@
       <%= f.input :category, label: 'Category of the Service Item', error: 'Category is mandatory, please specify one', collection: ["information", "task"], label: false %>
     </div>
     <div class="service-item-type service-item-info title-bold">
-      <%= f.input :data_type, label: 'Data type of the Service Item', error: 'Data type is mandatory, please specify one', collection: ["text", "number", "date", "datetime-local", "address"], label: false %>
+      <%= f.input :data_type, label: 'Data type of the Service Item', error: 'Data type is mandatory, please specify one', collection: ["text", "number", "date", "datetime-local", "address", "yes or no"], label: false %>
     </div>
     <div class="service-item-price service-item-info title-bold">
       <%= f.input :unit_price, label: 'Unit price of the Servie Item', error: 'Unit price is mandatory, please specify one', label: false, placeholder: "unit price..." %>

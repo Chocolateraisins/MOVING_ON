@@ -1,23 +1,35 @@
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 form">
-      <h1>Edit Service Item</h1>
 
-      <h2>Service: <%= @service.name %></h2>
-      <p> <%= @service.description %></p>
+      <div class="card-body">
+        <div class="order-details-card">
 
-      <%= simple_form_for [@service, @service_item], url: admin_service_service_item_path(@service, @service_item) do |f| %>
-        <div class="form-inputs">
-          <%= f.input :content %>
-          <%= f.input :additional_information %>
-          <%= f.input :data_type, collection: ["text", "number", "date", "datetime-local" "address"]%>
-          <%= f.input :category, collection: ["information", "task"] %>
-          <%= f.button :submit, class:"btn btn-primary btn-lg"%>
-          <%= link_to 'Back to Services', admin_services_path, class:"btn btn-primary btn-lg"%>
-          <%= link_to 'Delete service', admin_service_service_item_path(@service, @service_item), method: :delete, data: { confirm: "Are you sure you want to delete the Service Item #{@service_item.content.upcase}?" }, class:"btn btn-danger" %>
-        </div>
+          <h2>Edit Service Item</h2>
+
+          <h3><%= @service.name %></h3>
+          </hr>
+          <p> <%= @service.description %></p>
+
+          <%= simple_form_for [@service, @service_item], url: admin_service_service_item_path(@service, @service_item) do |f| %>
+
+            <div class="form-inputs">
+              <%= f.input :content %>
+              <%= f.input :additional_information %>
+              <%= f.input :data_type, collection: ["text", "number", "date", "datetime-local" "address", "yes or no"]%>
+              <%= f.input :category, collection: ["information", "task"] %>
+              <%= f.button :submit, class:"rounded-btn"%>
+              <%= link_to 'Back to Services', admin_services_path, class:"rounded-btn"%>
+              <%= link_to 'Delete service', admin_service_service_item_path(@service, @service_item), method: :delete, data: { confirm: "Are you sure you want to delete the Service Item #{@service_item.content.upcase}?" }, class:"rounded-btn" %>
+            </div>
+
+          </div>
+          <% end %>
+
+       </div>
       </div>
-      <% end %>
+
     </div>
   </div>
 </div>
