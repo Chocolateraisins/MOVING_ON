@@ -15,7 +15,8 @@
           <p class="card-text"><%= cl_image_tag("pin_white_icon",
           width: 15,crop: :fill) %>  Address: <%= order.deceased_address %></p>
           <p class ="card-text"><%= link_to "See details", order_path(order), method: :get %></p>
-          <%= button_to "Cancel order", admin_order_path(order), method: :delete, :class => "admin-rounded-btn", data: {confirm: "Are you sure?"} %>
+          <br>
+          <%= button_to "Cancel order", admin_order_path(order), method: :delete, :class => "rounded-btn-no-flex", data: {confirm: "Are you sure?"} %>
         </div>
       </div>
     <% end %>
