@@ -1,10 +1,5 @@
 
 
-  <% @order.order_items.each do |order_item| %>
-    <% if order_item.completed == false && order_item.service_item.category == "task" %>
-      <li><%= order_item.service_item.content %> : <%= order_item.content %></li>
-    <% end %>
-  <% end %>
 
 <div class="container">
   <div class="row">
@@ -30,6 +25,7 @@
       <br><br>
 
         <div class="row">
+          services = @order.selected_services
           <%  Service.all.each do |service|%>
             <div class="col col-xs-12">
               <div class="order-card">
@@ -52,6 +48,7 @@
             </div>
           <% end %>
         </div>
+
       <br> <%= link_to "Back to Overview", orders_path,class:"btn btn-primary btn-sm" %>
     </div>
   </div>
