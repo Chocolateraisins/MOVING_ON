@@ -7,7 +7,7 @@
           <div class="separator"></div>
           <br>
           <p><%= cl_image_tag("order_white_icon",
-          width: 15,crop: :fill) %> Order # <%= order_item.order.id %></p>
+          width: 15,crop: :fill) %> Order # <%= order_item.order.try(:id) %></p>
           <br>
           <p><%= order_item.service_item.content.capitalize %> => <%= order_item.content %></p>
           <%= simple_form_for [:admin, order_item] do |f| %>
