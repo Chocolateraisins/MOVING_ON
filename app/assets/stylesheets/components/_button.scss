@@ -104,9 +104,20 @@
   }
 }
 
-
-
-
+// Admin dashboard - services button
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+  margin-top: 10px;
+.rounded-btn-no-flex {
+&:hover {
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+  }
+}
 
 
 
