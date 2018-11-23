@@ -88,9 +88,10 @@ Service.destroy_all if Rails.env == "DEVELOPMENT"
 
 puts "Creating Services House Clearance, Mail Forwarding, Contract Cancellation"
 
-service_1 = Service.create!(name: "House Clearance", description: "This service includes cleaning, moving, clearing and taking care of belongings.")
-service_2 = Service.create!(name: "Mail Forwarding", description: "This service will make sure all mail gets forwarded to a specified address.")
-service_3 = Service.create!(name: "Contract Cancellation", description: "This service will cancel all contracts related to the deceased's home.")
+service_1 = Service.create!(name: "House Clearance", description: "No matter the size or type of home your lost one lived in – we will carefully clear out all belongings and store, sell or move them for you.")
+service_2 = Service.create!(name: "Mail Forwarding", description: "We will make sure all mail gets forwarded to the right recipient – simply provide us with a forwarding address.")
+service_3 = Service.create!(name: "Contract Cancellation", description: "We can take care of the cancelation of any phone lines, TV subscriptions and other contracts registered at this address. This will save you any associated paperwork.")
+service_4 = Service.create!(name: "House Maintenance", description: "Our team of professionals will conduct monthly check ups and cleaning on your loved one's house. Give yourself time to decide what to do with the property.")
 
 puts "Created #{Service.count} new services!"
 
@@ -103,23 +104,28 @@ ServiceItem.destroy_all if Rails.env == "DEVELOPMENT"
 puts "Creating ServiceItems for #{Service.count} Services..."
 
 # ServiceItems for Service 1
-service_item_1 = ServiceItem.create!(service: service_1, additional_information: Faker::Lorem.sentence(3, true, 4), content: "number of rooms", unit_price: 0, data_type: "number", category: "information")
-service_item_2 = ServiceItem.create!(service: service_1, additional_information: Faker::Lorem.sentence(3, true, 4), content: "total area", unit_price: 10, data_type: "number", category: "information")
-service_item_3 = ServiceItem.create!(service: service_1, additional_information: Faker::Lorem.sentence(3, true, 4), content: "property type", unit_price: 0, category: "information")
-service_item_4 = ServiceItem.create!(service: service_1, additional_information: Faker::Lorem.sentence(3, true, 4), content: "moving date time", unit_price: 0, data_type: "datetime-local", category: "information")
-service_item_5 = ServiceItem.create!(service: service_1, additional_information: Faker::Lorem.sentence(3, true, 4), content: "belongings action", unit_price: 0, category: "task")
-
+service_item_1 = ServiceItem.create!(service: service_1, additional_information: Faker::Lorem.sentence(3, true, 4), content: "How many rooms does the home have?", unit_price: 0, data_type: "number", category: "information")
+service_item_2 = ServiceItem.create!(service: service_1, additional_information: Faker::Lorem.sentence(3, true, 4), content: "What is the total floor area of the home?", unit_price: 10, data_type: "number", category: "information")
+service_item_3 = ServiceItem.create!(service: service_1, additional_information: Faker::Lorem.sentence(3, true, 4), content: "What type of home was this? I.e. an apartment, house, etc.", unit_price: 0, category: "information")
+service_item_4 = ServiceItem.create!(service: service_1, additional_information: Faker::Lorem.sentence(3, true, 4), content: "When do you want our  team to move furniture and belongings from the house?", unit_price: 0, data_type: "datetime-local", category: "information")
+service_item_5 = ServiceItem.create!(service: service_1, additional_information: Faker::Lorem.sentence(3, true, 4), content: "What would you like us to do with your loved one's belongings? We can move everyting into storage, auction it for you or move it to another address.", unit_price: 0, category: "task")
 
 # ServiceItems for Service 2
-service_item_7 = ServiceItem.create!(service: service_2, additional_information: Faker::Lorem.sentence(3, true, 4), content: "mail forwarding", unit_price: 15, category: "task")
-service_item_8 = ServiceItem.create!(service: service_2, additional_information: Faker::Lorem.sentence(3, true, 4), content: "forwarding address", unit_price: 0, category: "information")
+
+service_item_8 = ServiceItem.create!(service: service_2, additional_information: Faker::Lorem.sentence(3, true, 4), content: "Where would you like any future mail to be forwarded?", unit_price: 50, data_type: address, category: "task")
 
 # ServiceItems for Service 3
-service_item_9 = ServiceItem.create!(service: service_3, additional_information: Faker::Lorem.sentence(3, true, 4), content: "cancel contract", unit_price: 0, category: "task")
-service_item_10 = ServiceItem.create!(service: service_3, additional_information: Faker::Lorem.sentence(3, true, 4), content: "type of contract", unit_price: 0, category: "information")
-service_item_11 = ServiceItem.create!(service: service_3, additional_information: Faker::Lorem.sentence(3, true, 4), content: "name of provider", unit_price: 0, category: "information")
+service_item_10 = ServiceItem.create!(service: service_3, additional_information: Faker::Lorem.sentence(3, true, 4), content: "What type of contracts would you like to cancel? You can specify up to 3 contracts below.", unit_price: 50, category: "task")
+service_item_11 = ServiceItem.create!(service: service_3, additional_information: Faker::Lorem.sentence(3, true, 4), content: "What is the name of the provider?", unit_price: 0, category: "information")
+service_item_12 = ServiceItem.create!(service: service_3, additional_information: Faker::Lorem.sentence(3, true, 4), content: "What type of contracts would you like to cancel?", unit_price: 0, category: "task")
+service_item_13 = ServiceItem.create!(service: service_3, additional_information: Faker::Lorem.sentence(3, true, 4), content: "What is the name of the provider?", unit_price: 0, category: "information")
+service_item_14 = ServiceItem.create!(service: service_3, additional_information: Faker::Lorem.sentence(3, true, 4), content: "What type of contracts would you like to cancel?", unit_price: 0, category: "task")
+service_item_15 = ServiceItem.create!(service: service_3, additional_information: Faker::Lorem.sentence(3, true, 4), content: "What is the name of the provider?", unit_price: 0, category: "information")
+
+# ServiceItems for Service 4
 
 puts "Created #{ServiceItem.count} ServiceItems!"
+service_item_16 = ServiceItem.create!(service: service_4, additional_information: Faker::Lorem.sentence(3, true, 4), content: "Is there anything we should take into consideration when taking care of the home? Just let us know here.", unit_price: 500, category: "information")
 
 # ------------------------------------------------------
 
@@ -141,11 +147,11 @@ order_item_4 = OrderItem.create!(order: order_1, service_item: service_item_4, c
 order_item_5 = OrderItem.create!(order: order_1, service_item: service_item_5, content: belongings_actions.sample, completed: false)
 
 # OrderItem for Service 2, Order 1
-order_item_7 = OrderItem.create!(order: order_1, service_item: service_item_7, content: "yes", completed: false)
+# order_item_7 = OrderItem.create!(order: order_1, service_item: service_item_7, content: "yes", completed: false)
 order_item_8 = OrderItem.create!(order: order_1, service_item: service_item_8, content: Faker::Address.street_address, completed: false)
 
 # OrderItem for Service 3, Order 1
-order_item_9 = OrderItem.create!(order: order_1, service_item: service_item_9, content: "yes", completed: false)
+# order_item_9 = OrderItem.create!(order: order_1, service_item: service_item_9, content: "yes", completed: false)
 order_item_10 = OrderItem.create!(order: order_1, service_item: service_item_10, content: type_of_contracts.sample, completed: false)
 order_item_11 = OrderItem.create!(order: order_1, service_item: service_item_11, content: "my defined provider", completed: false)
 
@@ -161,11 +167,11 @@ order_item_4 = OrderItem.create!(order: order_2, service_item: service_item_4, c
 order_item_5 = OrderItem.create!(order: order_2, service_item: service_item_5, content: belongings_actions.sample, completed: false)
 
 # OrderItem for Service 2, Order 2
-order_item_7 = OrderItem.create!(order: order_2, service_item: service_item_7, content: "yes", completed: false)
+# order_item_7 = OrderItem.create!(order: order_2, service_item: service_item_7, content: "yes", completed: false)
 order_item_8 = OrderItem.create!(order: order_2, service_item: service_item_8, content: Faker::Address.street_address, completed: false)
 
 # OrderItem for Service 3, Order 2
-order_item_9 = OrderItem.create!(order: order_2, service_item: service_item_9, content: "yes", completed: false)
+# order_item_9 = OrderItem.create!(order: order_2, service_item: service_item_9, content: "yes", completed: false)
 order_item_10 = OrderItem.create!(order: order_2, service_item: service_item_10, content: type_of_contracts.sample, completed: false)
 order_item_11 = OrderItem.create!(order: order_2, service_item: service_item_11, content: "my defined provider", completed: false)
 
