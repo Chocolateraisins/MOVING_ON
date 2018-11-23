@@ -1,6 +1,6 @@
 .admin-services-page {
   padding: 20px;
-  padding-top: 70px;
+  padding-top: 40px;
 }
 
 
@@ -20,6 +20,7 @@
     font-weight: bold;
     // margin: 20px 0px;
     margin-bottom: 30px;
+    margin-top: 25px;
   }
 
 
@@ -113,17 +114,17 @@
     }
     .service-item-content {
       // background-color: blue;
-      width: 30%;
+      width: 25%;
       &:hover {
-        cursor: pointer;
+        // cursor: pointer;
         text-decoration: none;
       }
     }
     .service-item-additional-information {
       // background-color: pink;
-      width: 30%;
+      width: 35%;
       &:hover {
-        cursor: pointer;
+        // cursor: pointer;
         text-decoration: none;
       }
     }
@@ -132,7 +133,7 @@
       width: 12.5%;
       // text-align: center;
       &:hover {
-        cursor: pointer;
+        // cursor: pointer;
         text-decoration: none;
       }
     }
@@ -141,7 +142,7 @@
       width: 12.5%;
       text-align: center;
       &:hover {
-        cursor: pointer;
+        // cursor: pointer;
         text-decoration: none;
       }
     }
@@ -150,7 +151,7 @@
       width: 12.5%;
       text-align: center;
       &:hover {
-        cursor: pointer;
+        // cursor: pointer;
         text-decoration: none;
       }
 

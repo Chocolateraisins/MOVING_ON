@@ -1,19 +1,30 @@
 <div class="card dashboard-big-tasks-card">
-      <h3>Filters</h3>
-      <br>
+      <h3><strong>FILTERS</strong></h3>
         <%= form_tag admin_orders_path, method: :get do %>
-        <%= label_tag :service %>
-        <%= select_tag "service", options_from_collection_for_select(Service.all, "id", "name"), prompt: "Filter by  service" %>
         <!-- Filter by service -->
-        <%= label_tag :status %>
-        <%= select_tag "status", options_for_select([ "Completed", "Pending" ], "Filter by status") %>
+        <br>
+        <div class="service-filter">
+          <p class="form-text"><%= label_tag :service %></p>
+          <%= select_tag "service", options_from_collection_for_select(Service.all, "id", "name"), prompt: "Filter by  service", :class => 'form_tag form-text' %>
+        </div>
         <!-- Filter by status -->
         <br>
-        <%= submit_tag "filter", class: "btn btn-large btn-primary" %>
+      <div class="form-row">
+        <div class="service-filter">
+
+          <p class="form-text"><%= label_tag :status%></p>
+          <%= select_tag "status", options_for_select([ "Completed", "Pending" ], "Filter by status"), :class => 'form_tag form-text' %>
+        </div>
+      </div>
+        <!-- submit -->
+        <br>
+      <div class="form-row">
+        <%= submit_tag "Submit", :class => 'rounded-btn-no-flex' %>
         <% end %>
+      </div>
+
+
         <!-- Display metrics -->
-        <br>
-        <br>
       <% tasks = Array.new %>
       <% mail_tasks = Array.new %>
       <% clearance_tasks = Array.new %>
@@ -30,15 +41,29 @@
             <% end %>
         <% end %>
       <% end %>
-      <h4><img style="height:25px" src="../assets/task_black_icon.png" alt="task"> Pending Tasks</h4>
-      <h4><%= tasks.count %></h4>
-      <br>
-      <h4><img style="height:25px" src="../assets/task_black_icon.png" alt="task">  House clearance</h4>
-      <h4><%= clearance_tasks.count %></h4>
-      <br>
-      <h4><img style="height:25px" src="../assets/task_black_icon.png" alt="task">  Mail Forwarding</h4>
-      <h4><%= mail_tasks.count %></h4>
-      <br>
-      <h4><img style="height:25px" src="../assets/task_black_icon.png" alt="task">  Contract cancellation</h4>
-      <h4><%= contract_tasks.count %></h4>
-    </div>
+
+      <!-- metrics count -->
+      <div class="metrics-box tasks-metrics">
+        <p class="dashboard-card-title"><%= tasks.count %></p>
+        <p><img style="height:15px" src="../assets/task_black_icon.png" alt="task">  Pending Tasks</p>
+      </div>
+
+      <!-- clearance count -->
+      <div class="metrics-box tasks-metrics">
+        <p class="dashboard-card-title"><%= clearance_tasks.count %></p>
+        <p><img style="height:15px" src="../assets/task_black_icon.png" alt="task">  House clearance</p>
+      </div>
+
+      <!-- mail count -->
+      <div class="metrics-box tasks-metrics">
+        <p class="dashboard-card-title"><%= mail_tasks.count %></p>
+        <p><img style="height:15px" src="../assets/task_black_icon.png" alt="task">  Mail forwarding</p>
+      </div>
+
+      <!-- contract count -->
+      <div class="metrics-box tasks-metrics">
+        <p class="dashboard-card-title"><%= contract_tasks.count %></p>
+        <p><img style="height:15px" src="../assets/task_black_icon.png" alt="task">  Contract cancellation</p>
+      </div>
+
+</div>

@@ -1,42 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 main-card">
 
-<!-- display all the names
-  Create Order.active  name1in.inactive - name2.iactive -name3.inactive -->
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 main-card">
+      <%= simple_form_for @order do |f| %>
+      <%= f.input :deceased_first_name, label: 'First name of the deceased', error: 'First name is mandatory, please specify one' %>
+      <%= f.input :deceased_last_name, label: 'Last name of the deceased', error: 'Last name is mandatory, please specify one' %>
+      <%= f.input :deceased_address, label: 'Address of the deceased', error: 'Address is mandatory, please specify one'%>
+      <%= f.input :date_of_death, as: :string, input_html: {class: "datepicker"} %>
 
-        <%= simple_form_for @order do |f| %>
-        <%= f.input :deceased_first_name, label: 'First name of the deceased', error: 'First name is mandatory, please specify one' %>
-        <%= f.input :deceased_last_name, label: 'Last name of the deceased', error: 'Last name is mandatory, please specify one' %>
-        <%= f.input :deceased_address, label: 'Address of the deceased', error: 'Address is mandatory, please specify one'%>
-        <%= f.input :date_of_death, as: :string, input_html: {class: "datepicker"} %>
-
-        <p><strong>Plese select the services you would like us to assist you with: </strong></p>
-
-
-        <div class="row">
-          <%= f.collection_check_boxes :desired_services, Service.all, :id, :name, include_hidden: false do |box| %>
-          <div class="col col-xs-12 col-sm-4">
-            <div class="order-card">
-              <div class="card-body">
-                <div class="order-card-subtotal">
-                  <p><%= box.object.description %></p>
-                </div>
-                <div class="order-card-service-name">
-                  <h5 class="card-title"><%= box.object.name %> </h5>
-                  <%= box.check_box %>
-                </div>
+      <p><strong>Please select the services you would like us to assist you with: </strong></p>
+      <div class="row">
+        <%= f.collection_check_boxes :desired_services, Service.all, :id, :name, include_hidden: false do |box| %>
+        <div class="col col-xs-12 col-sm-4">
+          <div class="order-card">
+            <div class="card-body">
+              <div class="order-card-subtotal">
+                <p><%= box.object.description %></p>
+              </div>
+              <div class="order-card-service-name">
+                <h5 class="card-title"><%= box.object.name %> </h5>
+                <%= box.check_box %>
               </div>
             </div>
           </div>
-          <% end %>
         </div>
-
-        <br><br>
-        <button class="rounded-btn" <%= f.button :submit %>Next</button>
-
         <% end %>
       </div>
+
+      <br><br>
+      <button class="rounded-btn" <%= f.button :submit %>Next</button>
+
+      <% end %>
     </div>
   </div>
+</div>
 
