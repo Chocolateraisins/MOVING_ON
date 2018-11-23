@@ -1,9 +1,9 @@
 <ul class="timeline-container">
   <div class="step-progress-bar">
-    <li class="timeline-number"> 1 </li>
-    <% step = 2 %>
+   <!--  <li class="timeline-number"> 1 </li> -->
+    <% step = 1 %>
     <% @order.chosen_services.each_with_index do |service, index| %>
-      <li data-servicelength="<%= @order.chosen_services.length %>" class="<%= 'active' if step == 2 %> serviceTitle timeline-number" id="tile-<%= step %>"> <%= step %> <%#= service.name%>
+      <li data-servicelength="<%= @order.chosen_services.length %>" class="<%= 'active' if step == 1 %> serviceTitle timeline-number" id="tile-<%= step %>"> <%= step %> <%#= service.name%>
       </li>
       <% step += 1 %>
     <% end %>

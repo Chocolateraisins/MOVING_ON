@@ -11,7 +11,7 @@
       <%= form_for @order do |f| %>
         <% @order.chosen_services.each_with_index do |service, index| %>
           <div id="servicesDiv" data-servicelength="<%= @order.chosen_services.length %>">
-            <div class="sub-form form-step" <%= 'hidden' if index > 0 %> id="step-<%= index + 2 %>">
+            <div class="sub-form form-step" <%= 'hidden' if index > 0 %> id="step-<%= index + 1 %>">
               <h1><%= service.name %></h1>
               <hr/>
               <p> <%= service.description %></p>

@@ -1,6 +1,6 @@
 class formWizard {
   constructor() {
-    this.activeStep = 2;
+    this.activeStep = 1;
     this.attachListeners();
     this.showPrevNextSubmit();
   }
@@ -60,12 +60,12 @@ class formWizard {
   }
 
   get totalLength() {
-    return this.getServiceTitles().length + 1;
+    return this.getServiceTitles().length;
   }
 
   showPrevNextSubmit() {
     // BEGINNING STATE
-    if (this.activeStep <= 2) {
+    if (this.activeStep <= 1) {
       document.querySelector("#previous").style.display = 'none';
     } else {
       document.querySelector("#previous").style.display = 'inline';
