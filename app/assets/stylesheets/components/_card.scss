@@ -94,10 +94,20 @@ padding: 5px;
   font-size: 24px;
 }
 
-.card-text p {
+.card-text {
   font-size: 14px;
   // color: rgb(183, 179, 179);
   color: white;
+}
+
+.card-text-link a {
+  font-size: 14px;
+  // color: rgb(183, 179, 179);
+  color: white;
+  text-decoration: underline;
+  &:hover {
+    color: $dark-brown;
+  }
 }
 .card-description p {
   font-size: 14px;
