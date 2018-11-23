@@ -112,7 +112,7 @@ service_item_5 = ServiceItem.create!(service: service_1, additional_information:
 
 # ServiceItems for Service 2
 
-service_item_8 = ServiceItem.create!(service: service_2, additional_information: Faker::Lorem.sentence(3, true, 4), content: "Where would you like any future mail to be forwarded?", unit_price: 50, data_type: address, category: "task")
+service_item_8 = ServiceItem.create!(service: service_2, additional_information: Faker::Lorem.sentence(3, true, 4), content: "Where would you like any future mail to be forwarded?", unit_price: 50, data_type: "address", category: "task")
 
 # ServiceItems for Service 3
 service_item_10 = ServiceItem.create!(service: service_3, additional_information: Faker::Lorem.sentence(3, true, 4), content: "What type of contracts would you like to cancel? You can specify up to 3 contracts below.", unit_price: 50, category: "task")
