@@ -6,7 +6,7 @@
             <div class="main-card">
               <h1>Order Summary</h1>
               <hr/>
-              <%= link_to "Details", order_path(order),class:"btn btn-primary btn-sm" %>
+              <%= link_to "Details", order_path(order),class:"rounded-btn-no-flex" %>
               <br>
               <br>
               <h3>Order Details <!-- #<%= order.id %> --></h3>
@@ -40,10 +40,11 @@
                     </div>
                 <% end %>
               </div>
+              <br>
 
 
-               <%= link_to "Edit this order", order_order_items_path(order),class:"btn rounded-btn" %>
-              <%= link_to "Delete this order", order_path(order), method: :delete, class:"btn rounded-btn" %>
+               <%= link_to "Edit this order", order_order_items_path(order),class:"rounded-btn-no-flex" %>
+              <%= link_to "Delete this order", order_path(order), method: :delete, class:"rounded-btn-no-flex" %>
             </div>
           </div>
         </div>
