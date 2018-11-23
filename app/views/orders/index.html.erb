@@ -15,6 +15,7 @@
               <p>Customer: <%= order.user.first_name %> <%= order.user.last_name %></p>
               <p>Deceased identity: <%= order.deceased_first_name %> <%= order.deceased_last_name %></p>
               <p>Deceased address: <%= order.deceased_address %></p>
+
               <p><strong> Order Total: <%= order.invoice_amount %>€ </strong></p>
 
               <h1>Selected Services</h1>
@@ -41,8 +42,8 @@
               </div>
 
 
-               <%= link_to "Edit this order", order_order_items_path(order),class:"btn btn-info btn-sm" %>
-              <%= link_to "Delete this order", order_path(order), method: :delete, class:"btn btn-danger btn-sm" %>
+               <%= link_to "Edit this order", order_order_items_path(order),class:"btn rounded-btn" %>
+              <%= link_to "Delete this order", order_path(order), method: :delete, class:"btn rounded-btn" %>
             </div>
           </div>
         </div>

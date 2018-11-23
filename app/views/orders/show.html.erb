@@ -25,8 +25,7 @@
       <br><br>
 
         <div class="row">
-          services = @order.selected_services
-          <%  Service.all.each do |service|%>
+          <%  @order.chosen_services.each do |service|%>
             <div class="col col-xs-12">
               <div class="order-card">
                 <div class="card-body">
