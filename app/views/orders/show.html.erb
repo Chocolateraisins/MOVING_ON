@@ -7,7 +7,7 @@
 
       <h1>Order Details</h1>
       <hr/>
-      <%= link_to "Back to Overview", orders_path,class:"btn btn-primary btn-sm" %>
+      <%= link_to "Back to Overview", orders_path,class:"rounded-btn-no-flex" %>
       <br><br>
       <p>Customer: <%= @order.user.first_name %> <%= @order.user.last_name %></p>
       <p>Status: <%= @order.status %></p>
@@ -20,8 +20,8 @@
       <hr/ style="width: 50%">
 
       <br>
-      <%= link_to "Edit this order", order_order_items_path(@order),class:"btn btn-info btn-sm" %>
-      <%= link_to "Delete this order", order_path(@order), method: :delete, class:"btn btn-danger btn-sm" %>
+      <%= link_to "Edit this order", order_order_items_path(@order),class:"rounded-btn-no-flex" %>
+      <%= link_to "Delete this order", order_path(@order), method: :delete, class:"rounded-btn-no-flex" %>
       <br><br>
 
         <div class="row">
@@ -48,7 +48,7 @@
           <% end %>
         </div>
 
-      <br> <%= link_to "Back to Overview", orders_path,class:"btn btn-primary btn-sm" %>
+      <br> <%= link_to "Back to Overview", orders_path,class:"rounded-btn-no-flex" %>
     </div>
   </div>
 </div>
