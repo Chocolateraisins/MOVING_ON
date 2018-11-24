@@ -45,25 +45,29 @@
       <!-- metrics count -->
       <div class="metrics-box tasks-metrics">
         <p class="dashboard-card-title"><%= tasks.count %></p>
-        <p><img style="height:15px" src="../assets/task_black_icon.png" alt="task">  Pending Tasks</p>
+        <p><%= cl_image_tag("task_black_icon",
+        width: 15,crop: :fill) %>  Pending Tasks</p>
       </div>
 
       <!-- clearance count -->
       <div class="metrics-box tasks-metrics">
         <p class="dashboard-card-title"><%= clearance_tasks.count %></p>
-        <p><img style="height:15px" src="../assets/task_black_icon.png" alt="task">  House clearance</p>
+        <p><%= cl_image_tag("moving_icon_black",
+        width: 15,crop: :fill) %>  House clearance</p>
       </div>
 
       <!-- mail count -->
       <div class="metrics-box tasks-metrics">
         <p class="dashboard-card-title"><%= mail_tasks.count %></p>
-        <p><img style="height:15px" src="../assets/task_black_icon.png" alt="task">  Mail forwarding</p>
+        <p><%= cl_image_tag("mail_black_icon",
+        width: 15,crop: :fill) %>  Mail forwarding</p>
       </div>
 
       <!-- contract count -->
       <div class="metrics-box tasks-metrics">
         <p class="dashboard-card-title"><%= contract_tasks.count %></p>
-        <p><img style="height:15px" src="../assets/task_black_icon.png" alt="task">  Contract cancellation</p>
+        <p><%= cl_image_tag("contract_black_icon",
+        width: 15,crop: :fill) %>  Contract cancellation</p>
       </div>
 
 </div>
