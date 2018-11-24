@@ -29,6 +29,7 @@
       <% mail_tasks = Array.new %>
       <% clearance_tasks = Array.new %>
       <% contract_tasks = Array.new %>
+
       <% @order_items.each do |order_item| %>
         <% if order_item.completed == false && order_item.service_item.category == "task" %>
           <% tasks << order_item %>
@@ -43,7 +44,7 @@
       <% end %>
 
       <!-- metrics count -->
-      <div class="metrics-box tasks-metrics">
+      <div style="background-color: #B9B999" class="metrics-box tasks-metrics background-color">
         <p class="dashboard-card-title"><%= tasks.count %></p>
         <p><%= cl_image_tag("task_black_icon",
         width: 15,crop: :fill) %>  Pending Tasks</p>
